@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Template: Finish</title>
+	</head>
+
+	<body>
+		<!-- ###TEMPLATE### begin-->
+		<div>
+			<h2>Choose a package</h2>
+			<p>Please select the package you want to install for your TYPO3 System.</p>
+			<form action="index.php?TYPO3_INSTALL[type]=database&mode=123&step=5" method="post">
+				<fieldset style="border-width: 0;">
+					<input id="systemToInstallDemo" type="radio" name="systemToInstall" value="demo" checked="checked" />
+					<label for="systemToInstallDemo"><strong>Demo System (recommended)</strong><br />
+					This will install a TYPO3 system including a demo website with all basic configuration, content elements and a few extensions.</label><br />
+					<input id="systemToInstallEmpty" type="radio" name="systemToInstall" value="blank" />
+					<label for="systemToInstallEmpty"><strong>Blank System</strong><br />
+					This will install a bare TYPO3 system with basic database and folder structure.</label>
+				</fieldset>
+				<fieldset style="border-width: 0;">
+					<input type="submit" value="Continue" />
+				</fieldset>
+			</form>
+		</div>
+		<!-- ###TEMPLATE### end-->
+	</body>
+</html>

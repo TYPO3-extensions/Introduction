@@ -1,0 +1,411 @@
+@charset "UTF-8";
+
+/* reset all browser default styling */
+@import "reset-min.css";
+
+/* import example.css for default styling of content elements  */
+@import "example.css" all;
+html {
+	overflow-y: scroll;
+}
+/* grid layout */
+div#navigationAids, div#footer h3, div#navigationFirstLevel h2, div#navigationSecondLevel h2 {
+	display:none;
+}
+div#outerWrap {
+	width:900px;
+	text-align:center;
+	margin:0 auto;
+	overflow:auto;
+}
+div#outerWrap div {
+	text-align:left;
+}
+div#header {
+	background:#333;
+	height:180px;
+	margin-top:50px;
+}
+div#navigationSecondLevel {
+	float:left;
+	width:21%;
+}
+div#main {
+	width: 53%;
+	float:left;
+}
+div#secondary {
+	width:26%;
+	float:right;
+}
+div#footer {
+	clear:both;
+}
+body.hideRightColumn div#secondary {
+	display:none;
+}
+body.hideRightColumn div#main {
+	width:79%;
+	float:left;
+	position:relative;
+}
+body.hideLeftColumn div#main {
+	width:74% !important;
+	float:left;
+	position:relative;
+}
+body.hideLeftColumn div#navigationSecondLevel {
+	display:none;
+}
+body.hideRightAndLeftColumn div#main {
+	width:100%;
+}
+body.hideRightAndLeftColumn div#secondary, body.hideRightAndLeftColumn div#navigationSecondLevel {
+	display:none;
+}
+body.hideRightAndLeftColumn div#contentWrap, body.hideLeftColumn div#contentWrap {
+	background-image:none;
+	background:#fff;
+}
+/* padding */
+div#secondayContent, div#navigationContent, div#footer {
+	padding:12px;
+}
+div#mainContent {
+	padding:30px;
+	overflow:hidden;
+}
+/* styling and individual positioning of elements */
+body {
+	background: #494949 url(../images/bg.gif) top left repeat-x;
+}
+html {
+	background:#494949;
+}
+div#header {
+	background:#3c8dd9 url(../images/header_overlay.png);
+}
+div#contentWrap {
+	background: url(../images/bg_contentWrap.gif) top left repeat-y;
+	overflow:hidden;
+	clear:both
+}
+div#navigationSecondLevel {
+}
+div#main {
+}
+div#secondary {
+	margin-top:60px;
+}
+div#footer {
+	background:url(../images/bg_footer.jpg) top center no-repeat;
+}
+div#footer p {
+	text-align:center;
+}
+div#topMenu ul li, div#languageMenu ul li {
+	display:inline;
+	padding-left:1em;
+	font-size:100%;
+}
+div#topMenu, div#languageMenu {
+	float:right;
+	padding-bottom:24px;
+	margin:-24px 6px 0 0;
+}
+div.secondaryContentSection {
+	background:#f2f2f2;
+	border:1px solid #cfcecf;
+	width:155px;
+	border-top:none;
+	padding: 0 10px 10px 10px;
+	margin:0 0 2.4em 10px;
+	overflow:hidden;
+}
+div#navigationFirstLevel {
+	background: #3c8dd9 url(../images/navOverlay.png) top left repeat-x;
+}
+div#navigationFirstLevelMenu ul {
+	overflow:hidden;
+	margin:0 0 0 190px;
+}
+div#navigationFirstLevelMenu ul li {
+	display:block;
+	float:left;
+	margin-left:0;
+}
+div#navigationFirstLevelMenu ul li a {
+	padding:0.8em 1em;
+	display:block;
+}
+div#breadcrumb {
+	position:relative;
+	left:26px;
+	top:16px;
+	width:95%;
+}
+div#breadcrumb span {
+	font-weight:bold;
+}
+div#navigationSecondLevelMenu ul {
+	text-indent:20px;
+	line-height:2.2em;
+	border-bottom:1px solid #ccc;
+	margin-left:0;
+}
+div#navigationSecondLevelMenu ul ul {
+	text-indent:35px;
+	border-bottom:none;
+	margin-bottom:0;
+}
+div#navigationSecondLevelMenu ul ul ul {
+	text-indent:50px;
+}
+div#navigationSecondLevelMenu {
+	width:190px;
+	margin-top:13px;
+}
+div#navigationSecondLevelMenu li.active {
+	background:#fff;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	font-weight:bold;
+}
+div#navigationSecondLevelMenu li.active ul li {
+	font-weight:normal;
+}
+div#navigationSecondLevelMenu li.selected {
+	background: #fff url(../images/bg_liCurrent.gif) top right no-repeat;
+	font-weight: bold !important;
+	border-top:1px solid #ccc;
+}
+div#navigationSecondLevelMenu li.selected li {
+	font-weight:normal;
+}
+/* div#navigationSecondLevelMenu li.active li.selected { border:none;} */
+div#navigationSecondLevelMenu li {
+	border-top:1px solid #ccc;
+	list-style-type:none;
+	margin-left:0;
+}
+div#navigationSecondLevelMenu li.active li, div#navigationSecondLevelMenu li.selected li {
+	border-top:1px solid #eee;
+}
+/* link colors and treatment */
+a:link {
+	color: #3c8dd9;
+	text-decoration: none;
+}
+a:visited {
+	color: #3c8dd9;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+a:active {
+}
+div#footer a:link {
+	color:#848484;
+	text-decoration:underline;
+}
+div#footer a:visited {
+	color:#848484;
+	text-decoration:underline;
+}
+div#topMenu ul li a, div#languageMenu ul li a {
+	color:#a9a9a9 !important;
+}
+div#navigationFirstLevelMenu ul li a {
+	color:#fff;
+}
+div#navigationFirstLevelMenu ul li a.selected, div#navigationFirstLevelMenu ul li a.active {
+	background:#353535;
+}
+div#navigationFirstLevelMenu ul li a:hover {
+	background: url(../images/navButtonOverlay.png);
+	text-decoration: none;
+}
+div#breadcrumb a {
+	color: #5d5d5d;
+	margin:0 4px;
+}
+div#breadcrumb span {
+	margin:0 4px;
+}
+div#navigationSecondLevelMenu ul li a {
+	color:#353535;
+}
+div#navigationSecondLevelMenu ul li a:hover {
+	color:#3c8dd9;
+	text-decoration: none;
+}
+/* font treatment */
+body {
+	font: 70%/1.6em Verdana, Geneva, sans-serif;
+	color:#515151;
+}
+h1, h2, h3 {
+	font-weight:bold;
+	margin:0.5em 0;
+}
+h1 {
+	font-size:130%;
+}
+div#header h1 {
+	color:#fff;
+	font: 400% Georgia, "Times New Roman", Times, serif;
+	color: #f2f2f2;
+	margin-left:20px;
+	position:absolute;
+	font-style:italic;
+}
+div.secondaryContentSection .csc-header h1, div.secondaryContentSection .csc-header h2, div.secondaryContentSection .csc-header h3 {
+	color:#fff;
+	background:#494949;
+	padding: 6px 10px;
+	margin:0 0 1em -11px;
+	width:157px;
+}
+h2 {
+	font-size:120%;
+}
+h3 {
+	font-size:110%;
+}
+p {
+	margin-bottom:1em;
+}
+blockquote {
+	margin:1em 0 1em 2em;
+	padding-left:2em;
+	border-left:1px solid #ccc;
+}
+div#footer {
+	color:#848484;
+}
+div#navigationSecondLevel h2 {
+	margin-left: 12px;
+	padding-top:12px;
+}
+/* Addition LH */
+div#header h1 a {
+	color:#fff;
+	text-decoration: none;
+}
+/* TEMPORARY STYLES */
+
+
+div#searchBox {
+	left:10px;
+	top:189px;
+	position:relative;
+}
+div#searchBox input.inputText {
+	width:100px;
+}
+div#searchBox {
+	width: 168px;
+	height: 21px;
+	background: url(../images/bg_searchInput.gif) no-repeat;
+	margin-left:8px;
+}
+div#searchBox input#inputText {
+	float: left;
+	padding: 1px 0 2px 4px;
+	margin: 2px 0 0 20px;
+	border: 0;
+	width: 110px;
+	background: none;
+	color:#515151;
+}
+div#searchBox input.inputButton {
+	float: right;
+	margin: 3px 4px 0 0;
+	cursor: pointer;
+}
+div#searchBox legend {
+	display:none;
+}
+/* Indexed_search basic styling */
+div.tx-indexedsearch-res dt, div.tx-indexedsearch-res dt {
+	float:left;
+}
+dl.tx-indexedsearch-info {
+	font-size:80%;
+	color: #999;
+	text-transform:uppercase;
+	line-height:1.4em;
+}
+dt.item-crdate, dt.item-mtime, dt.item-path {
+	font-weight:bold;
+}
+div.tx-indexedsearch-res {
+	margin-bottom:2em;
+}
+.tx-indexedsearch td {
+	padding:2px;
+}
+.tx-indexedsearch .tx-indexedsearch-searchbox {
+}
+input#tx-indexedsearch-searchbox-sword {
+	width:250px;
+}
+.tx-indexedsearch select {
+	width:156px;
+}
+.tx-indexedsearch label {
+	display:block;
+	margin-top:1em;
+	text-transform:uppercase;
+	font-size:90%;
+}
+.tx-indexedsearch legend {
+	display:none;
+}
+.tx-indexedsearch-search-submit {
+	padding:1em 0;
+}
+/* Addition LH */
+.news-latest-item h3, .news-latest-item p {
+	margin-bottom: 0;
+}
+.news-list-subheader p {
+	display:inline;
+}
+.news-list-item {
+	padding: .4em 0 1em;
+	border-bottom: 1px dotted #eee;
+}
+.news-list-category {
+	font-size: 90%;
+}
+/* Demo Addtions - REMOVE THESE AGAIN AFTER T3UCW09 */
+.themeColorForeground {color:#D61423;}
+.themeColorBackground {background-color:#D61423;}
+
+div#header {
+	background-color:#D61423;
+}
+a:link, a:visited {
+	color:#D61423;
+}
+div#navigationFirstLevel {
+	background-color:#D61423;
+}
+div#navigationSecondLevelMenu ul li a:hover {
+	color:#D61423;
+}
+a.startButton {
+display: block;
+width: 260px;
+height: 55px;
+background-image: url(../images/button_getstartednow.png);
+background-repeat: no-repeat;
+background-position: 0 0;
+text-indent: -9999px;
+margin: 1em 0;
+}
+a.startButton:hover {
+background-position: 0 -56px;
+}

@@ -1,0 +1,63 @@
+2009-11-20 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Added method to change datababase character set
+	* Moved modifications of localconf one step forward
+	* Changed required password length
+	* Added addional step to choose between blank and demo system
+	* Added an extra View for when a blank system is installed
+	* Styling of different screens
+	* Changed extension key from introduction to demo
+
+2009-11-19 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Minor addition to the configuration
+	* Minor text modifications
+	* Choosen color is remembered when no password is entered
+	* The color is modified in the CSS to the choosen color
+	* Modified the importDatabase function
+	* Added a preview icon next to the colorpicker
+	
+2009-11-18 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Minor bugfix: Wrong characterset was written into the localconf.php
+	* Made an abstract view class
+	* Added a check whether mod_rewrite is enabled
+	* Copy default _.htaccess to .htaccess if none exist
+	* Added a check whether or not the .htaccess is applied (AllowOverride)
+	* Update the database to enable or disable realURL
+	* Update the database to apply the correct base href
+	* Checked whether the password was entered
+	* Added the colorpicker to the install tool, but color is not processed yet
+
+2009-11-17 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Added additional step
+	* The InstallTool password is changed to the given password
+	* Added dummy data to import into the database
+	* Added method to import package sql during step 5
+	* Passwords of fe_users and be_users are changed
+	* ENABLE_INSTALL_TOOL is unlinked, when not possible, a warning is displayed
+	* Added method to import files from the extension to the correct place
+	* Added some dummy files to copy
+	* Some code cleanup
+	* Added the posibility to define additional settings to include in localconf.php
+
+2009-11-16 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Moved configuration methods to Classes/Configuration/Configuration
+	* Added check which TTFdpi to use
+	* Renamed some variables to longer names
+	* Refactored the way the localconf.php was updated, by using the tx_install->setupGeneral()
+	* Added method to try automatically set ImageMagick settings
+	* localconf.php is updated when the additional steps are executed.
+	
+2009-11-16 Patrick Broens  <patrick@patrickbroens.nl>
+
+	* Moved Classes/Installer.php to Classes/Controller
+	* Renamed Classes/Controller/Installer.php to Controller.php
+	* Added a simple view with templating to show text
+
+2009-11-15 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Initial code generated with kickstarter, restructured file structure 
+	* Created basic hook implementation
