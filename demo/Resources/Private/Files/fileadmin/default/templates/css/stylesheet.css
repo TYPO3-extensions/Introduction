@@ -355,11 +355,9 @@ p#gettingStartedStepFurtherReading {
 	}
 a.startButton {
 	display: block;
-	width: 260px;
+	width: 242px;
 	height: 55px;
-	background-image: url(../images/button_getstartednow.png);
-	background-repeat: no-repeat;
-	background-position: 0 0;
+	background: url(../images/button_logintotypo3.png) top left no-repeat;
 	text-indent: -9999px;
 	margin: 1em 0;
 	}
