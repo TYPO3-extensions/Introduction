@@ -330,8 +330,9 @@ div#navigationSecondLevel h2 {
 	margin-left: 12px;
 	padding-top:12px;
 	}
-
+/********************************/
 /* FRONT PAGE - GETTING STARTED */
+/********************************/
 div#gettingStarted {
 	width:580px;
 	height:357px;
@@ -352,7 +353,19 @@ p#gettingStartedStepThree {
 p#gettingStartedStepFurtherReading {
 	margin-top:24px;
 	}
-
+a.startButton {
+	display: block;
+	width: 260px;
+	height: 55px;
+	background-image: url(../images/button_getstartednow.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	text-indent: -9999px;
+	margin: 1em 0;
+	}
+a.startButton:hover {
+	background-position: 0 -56px;
+	}
 
 /*************/
 /* SEARCHBOX */
