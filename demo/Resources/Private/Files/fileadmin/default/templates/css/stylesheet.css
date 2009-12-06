@@ -486,7 +486,7 @@ input#tx-indexedsearch-searchbox-sword {
 	color:#D61423;
 	}
 .themeColorBackground {
-	background-color:#D61423;
+	background-color:#D61423 !important;
 	}
 
 div#header {
