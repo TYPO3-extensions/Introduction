@@ -112,7 +112,10 @@ class tx_demo_controller {
 
 		$this->databaseImporter->changeCharacterSet();
 		$this->databaseImporter->importDatabase();
-		$this->databaseImporter->updateBaseHref(t3lib_div::getIndpEnv('HTTP_HOST').t3lib_div::getIndpEnv('TYPO3_SITE_PATH'));
+		$baseHref = t3lib_div::getIndpEnv('HTTP_HOST').t3lib_div::getIndpEnv('TYPO3_SITE_PATH');
+		// Remove last slash
+		$baseHref = substr($baseHref, 0, -1);
+		$this->databaseImporter->updateBaseHref($baseHref);
 
 		$this->filestructureImporter->importFiles();
 	}
