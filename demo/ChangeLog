@@ -1,3 +1,11 @@
+2010-03-31 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Added the generated realurl_autoconf.php which now includes configuration for tt_news. Fixes #6905.
+
+2010-03-21 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Removed trailing slash in the URL configuration. Addresses issue #5465.
+
 2010-02-14 Daniel Bruessler  <mail@danielbruessler.de>
 
 	* Added the first version of manual.sxw, for diff: manual.txt
