@@ -1,3 +1,7 @@
+2010-04-07 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Made the hooks compatible with the new install tool. Addresses #7125. Some tweaking needed.
+ 
 2010-03-31 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Added the generated realurl_autoconf.php which now includes configuration for tt_news. Fixes #6905.

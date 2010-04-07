@@ -67,25 +67,28 @@ class tx_demo_controller {
 	/**
 	 * Handle the incoming steps
 	 *
-	 * @param string $message The message to show
+	 * @param array $markers The markers which are used in the install tool
 	 * @param string $step The step in the install process
 	 * @param tx_install $callerObject The install object
 	 * @return void
 	 */
-	public function execute(&$message, $step, &$callerObject) {
+	public function execute(&$markers, $step, &$callerObject) {
 		$this->configuration = t3lib_div::makeInstance('tx_demo_configuration');
 		$this->databaseImporter = t3lib_div::makeInstance('tx_demo_import_database');
 		$this->filestructureImporter = t3lib_div::makeInstance('tx_demo_import_filestructure');
 		$this->installer = $callerObject;
 		$this->configuration->setInstallerObject($callerObject);
 		$this->databaseImporter->setInstallerObject($this->installer);
+		$message = '';
 
 		switch($step) {
 			case 'go':
+				$markers['header'] = 'Choose a package';
 				$this->installPackageAction($message);
 				break;
 			case '5':
 				if (t3lib_div::_GP('systemToInstall') == 'blank') {
+					$markers['header'] = 'Congratulations,';
 					$this->finishBlankAction($message);
 					break;
 				}
@@ -94,11 +97,16 @@ class tx_demo_controller {
 				break;
 			case '6':
 				$this->performUpdates();
+				$markers['header'] = 'Introduction package';
 				$this->passwordAction($message);
 				break;
 			case '7':
+				$markers['header'] = 'Congratulations,';
 				$this->finishAction($message);
 				break;
+		}
+		if ($message != '') {
+			$markers['step'] = $message;
 		}
 	}
 

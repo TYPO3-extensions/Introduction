@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2009 Peter Beernink <p.beernink@drecomm.nl>
+*  (c) 2010 Peter Beernink <p.beernink@drecomm.nl>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,17 +24,12 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/**
- * Configuration of the demo package
- *
- * @author      Peter Beernink <p.beernink@drecomm.nl>
- *
- */
+class tx_demo_additionalstepscontroller {
 
-if (!defined ("TYPO3_MODE"))    die ('Access denied.');
+	private $additionalSteps = 3;
 
-if (TYPO3_MODE == 'BE') {
-	$TYPO3_CONF_VARS['SC_OPTIONS']['ext/install/mod/class.tx_install.php']['stepOutput'][] = 'EXT:'.$_EXTKEY.'/Classes/Controller/Controller.php:&tx_demo_controller';
-	$TYPO3_CONF_VARS['SC_OPTIONS']['ext/install/mod/class.tx_install.php']['additionalSteps'][] = 'EXT:'.$_EXTKEY.'/Classes/Controller/AdditionalStepsController.php:&tx_demo_additionalstepscontroller';
+	public function execute() {
+		return $this->additionalSteps;
+	}
 }
 ?>
