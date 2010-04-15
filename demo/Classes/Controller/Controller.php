@@ -168,6 +168,11 @@ class tx_demo_controller {
 		require_once(t3lib_extMgm::extPath('demo', 'Classes/View/Password.php'));
 		$this->view = t3lib_div::makeInstance('tx_demo_view_password');
 
+		$this->installer->javascript[] = '<script type="text/javascript" src="' .
+			t3lib_div::createVersionNumberedFilename(
+				'../contrib/prototype/prototype.js'
+		) . '"></script>';
+
 		$this->view->assign('ENTER_PASSWORD' , '');
 		$this->view->assign('PASSWORD', '');
 		if ($displayError) {

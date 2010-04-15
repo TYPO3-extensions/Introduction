@@ -2,6 +2,7 @@
 
 	* Set the correct number of additional steps.
 	* Changed the handling of step '5' in order not to skip a step.
+	* Changed styling of the screens according to the styling of installer. Fixes #7160
 
 2010-04-07 Peter Beernink  <p.beernink@drecomm.nl>
 
