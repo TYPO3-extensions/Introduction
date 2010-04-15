@@ -82,25 +82,31 @@ class tx_demo_controller {
 		$message = '';
 
 		switch($step) {
-			case 'go':
+			case '4':
 				$markers['header'] = 'Choose a package';
 				$this->installPackageAction($message);
 				break;
 			case '5':
+				if ($this->installer->INSTALL['database_import_all']) {
+					$this->importDefaultTables();
+				}
+
 				if (t3lib_div::_GP('systemToInstall') == 'blank') {
 					$markers['header'] = 'Congratulations,';
 					$this->finishBlankAction($message);
 					break;
 				}
-				$this->configuration->applyDefaultConfiguration();
-				$this->configuration->modifyLocalConfFile();
-				break;
-			case '6':
+
+				if (t3lib_div::_GP('systemToInstall') == 'demo') {
+					$this->configuration->applyDefaultConfiguration();
+					$this->configuration->modifyLocalConfFile();
+				}
+
 				$this->performUpdates();
 				$markers['header'] = 'Introduction package';
 				$this->passwordAction($message);
 				break;
-			case '7':
+			case '6':
 				$markers['header'] = 'Congratulations,';
 				$this->finishAction($message);
 				break;
@@ -108,6 +114,17 @@ class tx_demo_controller {
 		if ($message != '') {
 			$markers['step'] = $message;
 		}
+	}
+
+	/**
++	 * Imports the default database tables which would normally be done in step 4
++	 *
++	 * @return void
++	 */
+	private function importDefaultTables() {
+		$_POST['goto_step'] = $this->installer->step;
+		$this->installer->action = str_replace('&step='.$this->installer->step, '&systemToInstall='.t3lib_div::_GP('systemToInstall'), $this->installer->action);
+		$this->installer->checkTheDatabase();
 	}
 
 	/**

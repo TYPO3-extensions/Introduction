@@ -1,3 +1,8 @@
+2010-04-15 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Set the correct number of additional steps.
+	* Changed the handling of step '5' in order not to skip a step.
+
 2010-04-07 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Made the hooks compatible with the new install tool. Addresses #7125. Some tweaking needed.

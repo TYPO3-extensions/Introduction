@@ -24,6 +24,8 @@
 					This will install a bare TYPO3 system with basic database and folder structure.</label>
 				</fieldset>
 				<fieldset style="border-width: 0;">
+					<input type="hidden" name="TYPO3_INSTALL[database_type]" value="import|CURRENT_TABLES+STATIC" />
+					<input type="hidden" name="TYPO3_INSTALL[database_import_all]" value="1" />
 					<input type="submit" value="Continue" />
 				</fieldset>
 			</form>

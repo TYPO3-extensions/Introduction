@@ -26,8 +26,17 @@
 ***************************************************************/
 class tx_demo_additionalstepscontroller {
 
-	private $additionalSteps = 3;
+	/**
+	 * The number of additional steps to add to the 1-2-3 installer
+	 * @var int
+	 */
+	private $additionalSteps = 1;
 
+	/**
+	 * Set the number of additional steps for the 1-2-3 installer
+	 *
+	 * @return int
+	 */
 	public function execute() {
 		return $this->additionalSteps;
 	}

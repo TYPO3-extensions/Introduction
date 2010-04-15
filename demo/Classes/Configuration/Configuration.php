@@ -60,7 +60,7 @@ class tx_demo_configuration {
 	 *
 	 * @var string
 	 */
-	private $stepAfterConfigurationUpdate = 6;
+	private $stepAfterConfigurationUpdate = 5;
 
 	/**
 	 * Sets the InstallerObject.
