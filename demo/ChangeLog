@@ -1,3 +1,7 @@
+2010-04-20 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Bugfix: Before perfoming GD functions, check if GD is available. Fixes #7384
+
 2010-04-15 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Set the correct number of additional steps.

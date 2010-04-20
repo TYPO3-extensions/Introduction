@@ -113,8 +113,9 @@ class tx_demo_configuration {
 				$this->InstallerObject->INSTALL['localconf.php'][$key] = $this->calculatedConfiguration[$key][0];
 			}
 		}
-		$this->InstallerObject->INSTALL['localconf.php']['TTFdpi'] = $this->determineDPI();
+
 		if ($this->InstallerObject->isGD()) {
+			$this->InstallerObject->INSTALL['localconf.php']['TTFdpi'] = $this->determineDPI();
 			$gdInfo = gd_info();
 			if (intval($gdInfo['GD Version']) >= 2) {
 				// 2.0 or higher

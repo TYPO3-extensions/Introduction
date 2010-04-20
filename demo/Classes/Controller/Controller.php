@@ -117,10 +117,10 @@ class tx_demo_controller {
 	}
 
 	/**
-+	 * Imports the default database tables which would normally be done in step 4
-+	 *
-+	 * @return void
-+	 */
+	 * Imports the default database tables which would normally be done in step 4
+	 *
+	 * @return void
+	 */
 	private function importDefaultTables() {
 		$_POST['goto_step'] = $this->installer->step;
 		$this->installer->action = str_replace('&step='.$this->installer->step, '&systemToInstall='.t3lib_div::_GP('systemToInstall'), $this->installer->action);
@@ -133,7 +133,10 @@ class tx_demo_controller {
 	 * @return void
 	 */
 	private function performUpdates() {
-		$this->configuration->modifyNegateMask();
+		// As we use some GD functions to deterime the negate mask we need to check if GD is available
+		if ($this->installer->isGD()) {
+			$this->configuration->modifyNegateMask();
+		}
 
 		$this->databaseImporter->changeCharacterSet();
 		$this->databaseImporter->importDatabase();
