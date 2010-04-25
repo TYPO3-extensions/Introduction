@@ -6,6 +6,7 @@
 @import "reset-min.css";
 
 
+
 /***************************************************************/
 /* import example.css for default styling of content elements  */
 /***************************************************************/
@@ -330,40 +331,8 @@ div#navigationSecondLevel h2 {
 	margin-left: 12px;
 	padding-top:12px;
 	}
-/********************************/
-/* FRONT PAGE - GETTING STARTED */
-/********************************/
-div#gettingStarted {
-	width:580px;
-	height:357px;
-	background:url(../images/bg_getStarted.jpg) top left;
-	padding:20px;
-	}
-div#gettingStarted h1 { 
-	font-size: 160%;
-	}
-p#gettingStartedStepOne, p#gettingStartedStepTwo, p#gettingStartedStepThree,p#gettingStartedStepFurtherReading {
-	width:430px; 
-	margin-left:100px; 
-	margin-top:32px;
-	}
-p#gettingStartedStepThree {
-	margin-top:24px;
-	}
-p#gettingStartedStepFurtherReading {
-	margin-top:24px;
-	}
-a.startButton {
-	display: block;
-	width: 242px;
-	height: 55px;
-	background: url(../images/button_logintotypo3.png) top left no-repeat;
-	text-indent: -9999px;
-	margin: 1em 0;
-	}
-a.startButton:hover {
-	background-position: 0 -56px;
-	}
+
+
 
 /*************/
 /* SEARCHBOX */
@@ -397,7 +366,6 @@ div#searchBox input.inputButton {
 div#searchBox legend {
 	display:none;
 	}
-
 
 /********************************/
 /* INDEXED_SEARCH - BASIC STYLING */
@@ -483,21 +451,21 @@ input#tx-indexedsearch-searchbox-sword {
 /* THEME COLOR OVERIDES */
 /************************/
 .themeColorForeground {
-	color:#D61423;
+	color:#F18F0B;
 	}
 .themeColorBackground {
-	background-color:#D61423 !important;
+	background-color:#F18F0B !important;
 	}
 
 div#header {
-	background-color:#D61423;
+	background-color:#F18F0B;
 	}
 a:link, a:visited {
-	color:#D61423;
+	color:#F18F0B;
 	}
 div#navigationFirstLevel {
-	background-color:#D61423;
+	background-color:#F18F0B;
 	}
 div#navigationSecondLevelMenu ul li a:hover {
-	color:#D61423;
+	color:#F18F0B;
 	}
