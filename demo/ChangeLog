@@ -1,3 +1,7 @@
+2010-04-27 Patrick Broens  <patrick@patrickbroens.nl>
+
+	* Fixed bug #7477: Hooks in the install tool have changed again
+
 2010-04-23 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Changed the name of the CSS classes as they where changed in the CSS of the install extension. Fixes #7441.

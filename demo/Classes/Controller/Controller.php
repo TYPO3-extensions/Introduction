@@ -72,7 +72,7 @@ class tx_demo_controller {
 	 * @param tx_install $callerObject The install object
 	 * @return void
 	 */
-	public function execute(&$markers, $step, &$callerObject) {
+	public function executeStepOutput(&$markers, $step, &$callerObject) {
 		$this->configuration = t3lib_div::makeInstance('tx_demo_configuration');
 		$this->databaseImporter = t3lib_div::makeInstance('tx_demo_import_database');
 		$this->filestructureImporter = t3lib_div::makeInstance('tx_demo_import_filestructure');

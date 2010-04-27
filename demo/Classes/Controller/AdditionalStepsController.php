@@ -37,7 +37,7 @@ class tx_demo_additionalstepscontroller {
 	 *
 	 * @return int
 	 */
-	public function execute() {
+	public function executeAdditionalSteps() {
 		return $this->additionalSteps;
 	}
 }
