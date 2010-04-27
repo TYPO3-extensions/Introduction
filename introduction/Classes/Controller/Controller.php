@@ -24,15 +24,15 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-require_once(t3lib_extMgm::extPath('demo', 'Classes/Configuration/Configuration.php'));
-require_once(t3lib_extMgm::extPath('demo', 'Classes/Import/Database.php'));
-require_once(t3lib_extMgm::extPath('demo', 'Classes/Import/Filestructure.php'));
+require_once(t3lib_extMgm::extPath('introduction', 'Classes/Configuration/Configuration.php'));
+require_once(t3lib_extMgm::extPath('introduction', 'Classes/Import/Database.php'));
+require_once(t3lib_extMgm::extPath('introduction', 'Classes/Import/Filestructure.php'));
 
-class tx_demo_controller {
+class tx_introduction_controller {
 	/**
 	 * The view object
 	 *
-	 * @var tx_demo_view_finish
+	 * @var tx_introduction_view_finish
 	 */
 	private $view;
 
@@ -46,7 +46,7 @@ class tx_demo_controller {
 	/**
 	 * The configuration object which can modify the localconf.php file
 	 *
-	 * @var tx_demo_configuration
+	 * @var tx_introduction_configuration
 	 */
 	private $configuration;
 
@@ -73,9 +73,9 @@ class tx_demo_controller {
 	 * @return void
 	 */
 	public function executeStepOutput(&$markers, $step, &$callerObject) {
-		$this->configuration = t3lib_div::makeInstance('tx_demo_configuration');
-		$this->databaseImporter = t3lib_div::makeInstance('tx_demo_import_database');
-		$this->filestructureImporter = t3lib_div::makeInstance('tx_demo_import_filestructure');
+		$this->configuration = t3lib_div::makeInstance('tx_introduction_configuration');
+		$this->databaseImporter = t3lib_div::makeInstance('tx_introduction_import_database');
+		$this->filestructureImporter = t3lib_div::makeInstance('tx_introduction_import_filestructure');
 		$this->installer = $callerObject;
 		$this->configuration->setInstallerObject($callerObject);
 		$this->databaseImporter->setInstallerObject($this->installer);
@@ -97,7 +97,7 @@ class tx_demo_controller {
 					break;
 				}
 
-				if (t3lib_div::_GP('systemToInstall') == 'demo') {
+				if (t3lib_div::_GP('systemToInstall') == 'introduction') {
 					$this->configuration->applyDefaultConfiguration();
 					$this->configuration->modifyLocalConfFile();
 				}
@@ -155,8 +155,8 @@ class tx_demo_controller {
 	 * @return void
 	 */
 	public function installPackageAction(&$message) {
-		require_once(t3lib_extMgm::extPath('demo', 'Classes/View/Installdemo.php'));
-		$this->view = t3lib_div::makeInstance('tx_demo_view_installdemo');
+		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Installintroduction.php'));
+		$this->view = t3lib_div::makeInstance('tx_introduction_view_installintroduction');
 		$message = $this->view->render();
 	}
 
@@ -168,8 +168,8 @@ class tx_demo_controller {
 	 * @return void
 	 */
 	public function passwordAction(&$message, $displayError = false) {
-		require_once(t3lib_extMgm::extPath('demo', 'Classes/View/Password.php'));
-		$this->view = t3lib_div::makeInstance('tx_demo_view_password');
+		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Password.php'));
+		$this->view = t3lib_div::makeInstance('tx_introduction_view_password');
 
 		$this->installer->javascript[] = '<script type="text/javascript" src="' .
 			t3lib_div::createVersionNumberedFilename(
@@ -207,8 +207,8 @@ class tx_demo_controller {
 	 * @return void
 	 */
 	public function finishBlankAction(&$message) {
-		require_once(t3lib_extMgm::extPath('demo', 'Classes/View/Finishblank.php'));
-		$this->view = t3lib_div::makeInstance('tx_demo_view_finishblank');
+		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Finishblank.php'));
+		$this->view = t3lib_div::makeInstance('tx_introduction_view_finishblank');
 
 		$message = $this->view->render();
 	}
@@ -222,7 +222,7 @@ class tx_demo_controller {
 	 * @return void
 	 */
 	public function finishAction(&$message) {
-		require_once(t3lib_extMgm::extPath('demo', 'Classes/View/Finish.php'));
+		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Finish.php'));
 
 		// Enable or disable realURL
 		$this->databaseImporter->updateRealURLConfiguration(t3lib_div::_GP('useRealURL'));
@@ -235,7 +235,7 @@ class tx_demo_controller {
 		$this->configuration->modifyPasswords($newPassword);
 		$this->filestructureImporter->changeColor(t3lib_div::GPvar('colorPicker'));
 
-		$this->view = t3lib_div::makeInstance('tx_demo_view_finish');
+		$this->view = t3lib_div::makeInstance('tx_introduction_view_finish');
 
 		// Try to remove ENABLE_INSTALL_TOOL
 		@unlink(PATH_typo3conf . 'ENABLE_INSTALL_TOOL');

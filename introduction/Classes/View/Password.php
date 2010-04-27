@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2009 Peter Beernink <p.beernink@drecomm.nl>
+*  (c) 2009 Patrick Broens <patrick@patrickbroens.nl>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,16 +24,15 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
+require_once(t3lib_extMgm::extPath('introduction' , 'Classes/View/Abstract.php'));
 
-require_once(t3lib_extMgm::extPath('demo' , 'Classes/View/Abstract.php'));
-
-class tx_demo_view_installdemo extends tx_demo_view_abstract {
+class tx_introduction_view_password extends tx_introduction_view_abstract {
 
 	/**
 	 * The template file
 	 *
 	 * @var string
 	 */
-	protected $templateFile = 'typo3conf/ext/demo/Resources/Private/Templates/Installdemo.html';
+	protected $templateFile = 'typo3conf/ext/introduction/Resources/Private/Templates/Password.html';
 }
 ?>

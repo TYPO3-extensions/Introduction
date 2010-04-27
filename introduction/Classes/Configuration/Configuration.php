@@ -25,7 +25,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-class tx_demo_configuration {
+class tx_introduction_configuration {
 
 	/**
 	 * The installer object
@@ -229,7 +229,7 @@ class tx_demo_configuration {
 	public function applyDefaultConfiguration() {
 		$localConfigurationLines = $this->InstallerObject->writeToLocalconf_control();
 
-		$packageConfiguration = explode(chr(10),str_replace(chr(13),'',trim(t3lib_div::getUrl(t3lib_extMgm::extPath('demo', $this->packageConfigurationPath)))));
+		$packageConfiguration = explode(chr(10),str_replace(chr(13),'',trim(t3lib_div::getUrl(t3lib_extMgm::extPath('introduction', $this->packageConfigurationPath)))));
 		// Remove the PHP ending tag
 		array_pop($packageConfiguration);
 		// Strip off everything till our starting point

@@ -24,7 +24,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-class tx_demo_import_database {
+class tx_introduction_import_database {
 
 	/**
 	 * The Installer object
@@ -38,7 +38,7 @@ class tx_demo_import_database {
 	 *
 	 * @var string
 	 */
-	private $sqlLocation = 'Resources/Private/Database/demo.sql';
+	private $sqlLocation = 'Resources/Private/Database/introduction.sql';
 
 	/**
 	 * Sets the InstallerObject.
@@ -91,7 +91,7 @@ class tx_demo_import_database {
 	 * @return void
 	 */
 	public function importDatabase() {
-		$fileContents = t3lib_div::getUrl(t3lib_extMgm::extPath('demo', $this->sqlLocation));
+		$fileContents = t3lib_div::getUrl(t3lib_extMgm::extPath('introduction', $this->sqlLocation));
 
 		$statements = $this->installer->getStatementArray($fileContents,1);
 
@@ -102,13 +102,14 @@ class tx_demo_import_database {
 		$difference = $this->installer->getDatabaseExtra($fieldDefinitionsFile, $fieldDefinitionsDatabase);
 		$updateStatements = $this->installer->getUpdateSuggestions($difference);
 
-		$this->installer->performUpdateQueries($updateStatements['add'] , array_keys($updateStatements['add']));
-		$this->installer->performUpdateQueries($updateStatements['change'] , array_keys($updateStatements['change']));
+		$this->installer->performUpdateQueries($updateStatements['add'] , $updateStatements['add']);
+		$this->installer->performUpdateQueries($updateStatements['change'] , $updateStatements['change']);
 		$this->installer->performUpdateQueries($updateStatements['create_table'] , $updateStatements['create_table']);
 
 		foreach($insertCount as $table => $count) {
 			$insertStatements = $this->installer->getTableInsertStatements($statements, $table);
 			foreach($insertStatements as $insertQuery) {
+				$insertQuery = rtrim($insertQuery, ';');
 				$GLOBALS['TYPO3_DB']->admin_query($insertQuery);
 
 			}
@@ -116,7 +117,7 @@ class tx_demo_import_database {
 	}
 
 	/**
-	 * Enables or disables the realURL extension for the demo site
+	 * Enables or disables the realURL extension for the introduction site
 	 *
 	 * @param boolean $enable Whether realURL should be enabled
 	 * @return void

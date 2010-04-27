@@ -24,15 +24,17 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-require_once(t3lib_extMgm::extPath('demo' , 'Classes/View/Abstract.php'));
+/**
+ * Configuration of the introduction package
+ *
+ * @author      Peter Beernink <p.beernink@drecomm.nl>
+ *
+ */
 
-class tx_demo_view_finishblank extends tx_demo_view_abstract {
+if (!defined ("TYPO3_MODE"))    die ('Access denied.');
 
-	/**
-	 * The template file
-	 *
-	 * @var string
-	 */
-	protected $templateFile = 'typo3conf/ext/demo/Resources/Private/Templates/Finishblank.html';
+if (TYPO3_MODE == 'BE') {
+	$TYPO3_CONF_VARS['SC_OPTIONS']['ext/install/mod/class.tx_install.php']['stepOutput'][] = 'EXT:'.$_EXTKEY.'/Classes/Controller/Controller.php:&tx_introduction_controller';
+	$TYPO3_CONF_VARS['SC_OPTIONS']['ext/install/mod/class.tx_install.php']['additionalSteps'][] = 'EXT:'.$_EXTKEY.'/Classes/Controller/AdditionalStepsController.php:&tx_introduction_additionalstepscontroller';
 }
 ?>

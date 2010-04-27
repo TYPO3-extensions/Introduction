@@ -1,7 +1,7 @@
 <?php
 
 ########################################################################
-# Extension Manager/Repository config file for ext "demo".
+# Extension Manager/Repository config file for ext "introduction".
 #
 # Auto generated 15-11-2009 15:50
 #
@@ -11,8 +11,8 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Demo package',
-	'description' => 'Demo package to setup a demo site',
+	'title' => 'Introduction package',
+	'description' => 'Introduction package to setup a introduction site',
 	'category' => 'example',
 	'author' => 'Peter Beernink',
 	'author_email' => 'p.beernink@drecomm.nl',

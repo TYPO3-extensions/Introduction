@@ -26,7 +26,7 @@
 ***************************************************************/
 require_once(PATH_tslib . 'class.tslib_content.php');
 
-abstract class tx_demo_view_abstract {
+abstract class tx_introduction_view_abstract {
 	/**
 	 * The content object class
 	 *
@@ -61,7 +61,7 @@ abstract class tx_demo_view_abstract {
 	 */
 	public function __construct() {
 		$this->contentObject = t3lib_div::makeInstance('tslib_cObj');
-		$this->assign(PATH_TO_RESOURCES, t3lib_div::getIndpEnv('TYPO3_SITE_PATH').t3lib_extMgm::siteRelPath('demo').'/Resources/Public/');
+		$this->assign(PATH_TO_RESOURCES, t3lib_div::getIndpEnv('TYPO3_SITE_PATH').t3lib_extMgm::siteRelPath('introduction').'/Resources/Public/');
 	}
 	/**
 	 * Assign a value to the template

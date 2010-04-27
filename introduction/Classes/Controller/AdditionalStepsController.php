@@ -24,7 +24,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-class tx_demo_additionalstepscontroller {
+class tx_introduction_additionalstepscontroller {
 
 	/**
 	 * The number of additional steps to add to the 1-2-3 installer

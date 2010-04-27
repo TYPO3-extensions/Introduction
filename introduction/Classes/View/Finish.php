@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2009 Peter Beernink <p.beernink@drecomm.nl>
+*  (c) 2009 Patrick Broens <patrick@patrickbroens.nl>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,17 +24,15 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/**
- * Configuration of the demo package
- *
- * @author      Peter Beernink <p.beernink@drecomm.nl>
- *
- */
+require_once(t3lib_extMgm::extPath('introduction' , 'Classes/View/Abstract.php'));
 
-if (!defined ("TYPO3_MODE"))    die ('Access denied.');
+class tx_introduction_view_finish extends tx_introduction_view_abstract {
 
-if (TYPO3_MODE == 'BE') {
-	$TYPO3_CONF_VARS['SC_OPTIONS']['ext/install/mod/class.tx_install.php']['stepOutput'][] = 'EXT:'.$_EXTKEY.'/Classes/Controller/Controller.php:&tx_demo_controller';
-	$TYPO3_CONF_VARS['SC_OPTIONS']['ext/install/mod/class.tx_install.php']['additionalSteps'][] = 'EXT:'.$_EXTKEY.'/Classes/Controller/AdditionalStepsController.php:&tx_demo_additionalstepscontroller';
+	/**
+	 * The template file
+	 *
+	 * @var string
+	 */
+	protected $templateFile = 'typo3conf/ext/introduction/Resources/Private/Templates/Finish.html';
 }
 ?>

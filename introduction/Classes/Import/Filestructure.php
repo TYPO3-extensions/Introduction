@@ -24,7 +24,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-class tx_demo_import_filestructure {
+class tx_introduction_import_filestructure {
 
 	/**
 	 * The directory containing all files to copy
@@ -77,7 +77,7 @@ class tx_demo_import_filestructure {
 	 * @return void
 	 */
 	public function importFiles() {
-		$this->copyRecursive(t3lib_extMgm::extPath('demo', $this->sourceDirectory), PATH_site);
+		$this->copyRecursive(t3lib_extMgm::extPath('introduction', $this->sourceDirectory), PATH_site);
 	}
 
 	/**
