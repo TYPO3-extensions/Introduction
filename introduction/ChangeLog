@@ -1,6 +1,7 @@
 2010-04-27 Patrick Broens  <patrick@patrickbroens.nl>
 
 	* Fixed bug #7477: Hooks in the install tool have changed again
+	* Feature #7132: Change the extension key from 'demo' to 'introduction'
 
 2010-04-23 Peter Beernink  <p.beernink@drecomm.nl>
 
