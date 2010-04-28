@@ -34,16 +34,19 @@ class tx_introduction_import_filestructure {
 	private $sourceDirectory = 'Resources/Private/Files';
 
 	/**
-	 * The CSS file in which the color should be replaced
+	 * The CSS files in which the color should be replaced
 	 *
-	 * @var unknown_type
+	 * @var array
 	 */
-	private $cssFile = 'fileadmin/default/templates/css/stylesheet.css';
+	private $cssFiles = array(
+		'fileadmin/default/templates/css/stylesheet.css',
+		'fileadmin/default/templates/css/frontpage.css',
+	);
 
 	/**
 	 *
 	 */
-	private $defaultColor = '#D61423';
+	private $defaultColor = '#F18F0B';
 
 	/**
 	 * Copies a directory recursive to another directory
@@ -100,9 +103,11 @@ class tx_introduction_import_filestructure {
 	 * @return void
 	 */
 	public function changeColor($color) {
-		$cssContent = file_get_contents(PATH_site.$this->cssFile);
-		$cssContent = str_replace($this->defaultColor, $color, $cssContent);
-		file_put_contents(PATH_site.$this->cssFile, $cssContent);
+		foreach ($this->cssFiles as $cssFile) {
+			$cssContent = file_get_contents(PATH_site.$cssFile);
+			$cssContent = str_replace($this->defaultColor, $color, $cssContent);
+			file_put_contents(PATH_site.$cssFile, $cssContent);
+		}
 	}
 }
 ?>

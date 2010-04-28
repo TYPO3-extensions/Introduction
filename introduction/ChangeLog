@@ -1,3 +1,9 @@
+2010-04-28 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Added images which are used in the new CSS and made the paths relative.
+	* Changed the default color and added support for multiple CSS files to change.
+	* Added new CSS file to the sys_templates in the introduction.sql
+
 2010-04-27 Patrick Broens  <patrick@patrickbroens.nl>
 
 	* Fixed bug #7477: Hooks in the install tool have changed again
