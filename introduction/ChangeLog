@@ -1,3 +1,7 @@
+2010-05-01 Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Implemented automatic installation of required extensions. Fixes #7293.
+
 2010-04-28 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Added images which are used in the new CSS and made the paths relative.

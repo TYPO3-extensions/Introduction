@@ -1,0 +1,4 @@
+The following extensions and versions are available:
+automaketemplate: 0.1.1
+realurl: 1.7.0
+tt_news: 2.5.2

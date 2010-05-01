@@ -27,6 +27,7 @@
 require_once(t3lib_extMgm::extPath('introduction', 'Classes/Configuration/Configuration.php'));
 require_once(t3lib_extMgm::extPath('introduction', 'Classes/Import/Database.php'));
 require_once(t3lib_extMgm::extPath('introduction', 'Classes/Import/Filestructure.php'));
+require_once(t3lib_extMgm::extPath('introduction', 'Classes/Import/Extension.php'));
 
 class tx_introduction_controller {
 	/**
@@ -63,6 +64,25 @@ class tx_introduction_controller {
 	 * @var string
 	 */
 	private $defaultColor = '#F18F0B';
+
+	/**
+	 * List of extensions to import.
+	 *
+	 * @var array
+	 */
+	private $extensionsToImport = array(
+		'automaketemplate',
+		'realurl',
+		'tt_news',
+	);
+
+	private $extensionsToEnable = array(
+		'automaketemplate',
+		'realurl',
+		'tt_news',
+		'felogin',
+		'indexed_search',
+	);
 
 	/**
 	 * Handle the incoming steps
@@ -138,6 +158,7 @@ class tx_introduction_controller {
 			$this->configuration->modifyNegateMask();
 		}
 
+		$this->importNeededExtensions();
 		$this->databaseImporter->changeCharacterSet();
 		$this->databaseImporter->importDatabase();
 		$baseHref = t3lib_div::getIndpEnv('HTTP_HOST').t3lib_div::getIndpEnv('TYPO3_SITE_PATH');
@@ -245,6 +266,22 @@ class tx_introduction_controller {
 			$this->view->assign('REMOVE_ENABLE_INSTALL_TOOL', 'Unfortunately it was not possible to remove the \'ENABLE_INSTALL_TOOL\' file.<br/>As this might be a security risk, please remove the file manually.');
 		}
 		$message = $this->view->render();
+	}
+
+	/**
+	 * Import all the needed extentions and enable them
+	 *
+	 * @return void
+	 */
+	private function importNeededExtensions() {
+		$extensionImporter = t3lib_div::makeInstance('tx_introduction_import_extension');
+		foreach ($this->extensionsToImport as $extensionKey) {
+			$extensionImporter->importExtension($extensionKey);
+		}
+
+		foreach ($this->extensionsToEnable as $extensionKey) {
+			$extensionImporter->enableExtension($extensionKey);
+		}
 	}
 }
 ?>
