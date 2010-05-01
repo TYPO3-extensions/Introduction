@@ -1,6 +1,7 @@
 2010-05-01 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Implemented automatic installation of required extensions. Fixes #7293.
+	* Changed the usage of t3lib_div::GPvar() to t3lib_div::_GP() due to deprecation.
 
 2010-04-28 Peter Beernink  <p.beernink@drecomm.nl>
 

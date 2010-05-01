@@ -201,7 +201,7 @@ class tx_introduction_controller {
 		$this->view->assign('PASSWORD', '');
 		if ($displayError) {
 			$this->view->assign('ENTER_PASSWORD' , 'The entered password is too short');
-			$this->view->assign('PASSWORD', t3lib_div::GPvar('password'));
+			$this->view->assign('PASSWORD', t3lib_div::_GP('password'));
 		}
 
 		$this->view->assign('CHECK_REAL_URL_COMPLIANCE_URL' , '');
@@ -212,8 +212,8 @@ class tx_introduction_controller {
 			}
 		}
 
-		if (t3lib_div::GPvar('colorPicker')) {
-			$this->view->assign('COLOR', t3lib_div::GPvar('colorPicker'));
+		if (t3lib_div::_GP('colorPicker')) {
+			$this->view->assign('COLOR', t3lib_div::_GP('colorPicker'));
 		} else {
 			$this->view->assign('COLOR', $this->defaultColor);
 		}
@@ -254,7 +254,7 @@ class tx_introduction_controller {
 			return;
 		}
 		$this->configuration->modifyPasswords($newPassword);
-		$this->filestructureImporter->changeColor(t3lib_div::GPvar('colorPicker'));
+		$this->filestructureImporter->changeColor(t3lib_div::_GP('colorPicker'));
 
 		$this->view = t3lib_div::makeInstance('tx_introduction_view_finish');
 
