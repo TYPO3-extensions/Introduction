@@ -1,3 +1,7 @@
+2010-05-03  Benjamin Mack  <benni@typo3.org>
+
+	* Exchanged ext_icon.gif to have a nice TYPO3 logo now
+
 2010-05-01 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Implemented automatic installation of required extensions. Fixes #7293.
