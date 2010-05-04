@@ -1,6 +1,6 @@
 2010-05-03  Benjamin Mack  <benni@typo3.org>
 
-	* Removed the hardcoded "stepAfterInstallation", since other extensions (like DBAL) can hook in the process before. Now, the current step is just advanced by one, which works just fine as well.
+	* Reverted the last change as now the install tool doesn't run through anymore
 	* Exchanged ext_icon.gif to have a nice TYPO3 logo now
 
 2010-05-01 Peter Beernink  <p.beernink@drecomm.nl>
