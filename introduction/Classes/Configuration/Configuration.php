@@ -56,13 +56,6 @@ class tx_introduction_configuration {
 	private $packageConfigurationStartingPoint = '## INSTALL SCRIPT POINT - all lines after this point will be included by the install script. Do not remove!';
 
 	/**
-	 * The step to perform after basic configuration is done
-	 *
-	 * @var string
-	 */
-	private $stepAfterConfigurationUpdate = 5;
-
-	/**
 	 * Sets the InstallerObject.
 	 *
 	 * @param tx_install $InstallerObject
@@ -125,8 +118,8 @@ class tx_introduction_configuration {
 			}
 		}
 
-		// Replace the step in the action, as we would run into a loop.
-		$this->InstallerObject->action = str_replace('step='.$this->InstallerObject->step, 'step='.$this->stepAfterConfigurationUpdate, $this->InstallerObject->action);
+			// Advance the current step in the action, as we would run into a loop otherwise.
+		$this->InstallerObject->action = str_replace('step=' . $this->InstallerObject->step, 'step=' . ($this->InstallerObject->step+1), $this->InstallerObject->action);
 
 		$this->InstallerObject->setupGeneral();
 	}
