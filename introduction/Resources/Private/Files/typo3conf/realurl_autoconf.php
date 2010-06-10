@@ -17,7 +17,6 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']=array (
       'userFunc' => 'EXT:realurl/class.tx_realurl_advanced.php:&tx_realurl_advanced->main',
       'spaceCharacter' => '-',
       'languageGetVar' => 'L',
-      'rootpage_id' => '1',
     ),
     'fileName' => 
     array (
