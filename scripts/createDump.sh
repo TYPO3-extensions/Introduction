@@ -16,3 +16,5 @@ sed "s/tx_realurl_enable = 1/tx_realurl_enable = \#\#\#ENABLE_REALURL\#\#\#/g" $
 # Replace Site path
 sed "s/domain = [^\\\r]*\\\r\\\n/domain = \#\#\#HOSTNAME_AND_PATH\#\#\#\\\r\\\n/g" ${OUTPUTFILE}_realURL > ${OUTPUTFILE}
 
+# Cleanup
+rm ${OUTPUTFILE}_absRefPrefix ${OUTPUTFILE}_dump ${OUTPUTFILE}_realURL
