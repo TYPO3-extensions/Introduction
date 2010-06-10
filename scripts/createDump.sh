@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 TABLES="be_groups be_users fe_groups fe_users index_fulltext index_grlist index_phash index_rel index_section index_stat_word index_words pages pages_language_overlay sys_be_shortcuts sys_filemounts sys_language sys_refindex sys_template tt_content tt_news tt_news_cat tt_news_cat_mm tx_realurl_pathcache tx_realurl_uniqalias tx_realurl_urldecodecache tx_realurl_urlencodecache"
 DATABASE=typo3
 OUTPUTFILE=introduction.sql
