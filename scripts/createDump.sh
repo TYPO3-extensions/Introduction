@@ -7,7 +7,7 @@ PASSWORD=1234
 
 mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'ALTER TABLE sys_template DROP COLUMN include_static'
 
-mysqldump -u ${USER} -p${PASSWORD} ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
+mysqldump -u ${USER} -p${PASSWORD} --disable-keys --delayed-insert ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
 
 # Comment absRefPrefix
 sed "s/absRefPrefix/\# absRefPrefix/g" ${OUTPUTFILE}_dump > ${OUTPUTFILE}_absRefPrefix
