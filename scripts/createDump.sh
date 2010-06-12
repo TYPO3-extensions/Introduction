@@ -16,8 +16,7 @@ sed "s/absRefPrefix/\# absRefPrefix/g" ${OUTPUTFILE}_dump > ${OUTPUTFILE}_absRef
 sed "s/tx_realurl_enable = 1/tx_realurl_enable = \#\#\#ENABLE_REALURL\#\#\#/g" ${OUTPUTFILE}_absRefPrefix > ${OUTPUTFILE}_realURL
 
 # Replace Site path
-sed 's/domain = [^\\\r]*\\r\\n/domain = ###HOSTNAME_AND_PATH###\\r\\n/g' ${OUTPU
-TFILE}_realURL > ${OUTPUTFILE}
+sed "s/domain = [^\\]*/domain = ###HOSTNAME_AND_PATH###/g" ${OUTPUTFILE}_realURL > ${OUTPUTFILE}
 
 # Cleanup
 rm ${OUTPUTFILE}_absRefPrefix ${OUTPUTFILE}_dump ${OUTPUTFILE}_realURL
