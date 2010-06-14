@@ -1,3 +1,29 @@
+2010-06-13  Michiel Roos  <michiel@netcreators.com>
+
+	* Change: updated changelog
+
+2010-06-12  Michiel Roos  <michiel@netcreators.com>
+
+	* Change: realurl_autoconf.php: added realurl configuration rootpage_id and expireDays
+	* Fixed bug #7681: Condition Internet Explorer 7 does not work and layout not good
+	* Fixed bug #7667: replaced default locale_all=english with en_US.UTF-8
+	* Fixed bug #8188: Donate link has target _blank
+
+2010-06-11  Michiel Roos  <michiel@netcreators.com>
+
+	* Fixed Bug #7648: typolinkCheckRootline and typolinkEnableLinksAcrossDomains should be left at the default
+	*	Fixed Bug #7649: config.sendCacheHeaders = 1, but no cache headers are sent
+
+2010-06-10  Michiel Roos  <michiel@netcreators.com>
+
+	* Fixed Bug #7633: Best Practices: not all pages must be indexed
+	* Fixed Bug #7592: Set Permissions and clean dam database table entries
+	* Fixed Bug #7646: Languages and Characters should be ordered alphabeticaly
+	* Updated realurl_autoconf.php
+	* Updated the uploads folder
+	* Fixed bug #7729: Introduction package is still using CSS Styled Content 4.2
+	* Cleanup temporary files
+
 2010-05-03  Benjamin Mack  <benni@typo3.org>
 
 	* Reverted the last change as now the install tool doesn't run through anymore

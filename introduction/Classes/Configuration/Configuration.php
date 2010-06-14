@@ -206,18 +206,19 @@ class tx_introduction_configuration {
 			// If already set, no need to check it again
 			return $TYPO3_CONF_VARS['GFX']['TTFdpi'];
 		}
-		$imageResource = @imagecreate (300, 50);
-		$backgroundColor = imagecolorallocate ($imageResource, 255, 255, 55);
-		$textColor = imagecolorallocate ($imageResource, 233, 14, 91);
-		@imagettftext($imageResource, t3lib_div::freetypeDpiComp(20), 0, 10, 20, $textColor, PATH_t3lib."/fonts/vera.ttf", 'Testing Truetype support');
+		if (function_exists('imagettftext')) {
+			$imageResource = @imagecreate (300, 50);
+			$backgroundColor = imagecolorallocate ($imageResource, 255, 255, 55);
+			$textColor = imagecolorallocate ($imageResource, 233, 14, 91);
+			imagettftext($imageResource, t3lib_div::freetypeDpiComp(20), 0, 10, 20, $textColor, PATH_t3lib."/fonts/vera.ttf", 'Testing Truetype support');
 
-		// If DPI is set to 72 and we should use 96, the color at 14,1 will be the textColor
-		$testColor = imagecolorat($imageResource, 14, 1);
-		if ($testColor == $textColor) {
-			return 96;
-		} else {
-			return 72;
+			// If DPI is set to 72 and we should use 96, the color at 14,1 will be the textColor
+			$testColor = imagecolorat($imageResource, 14, 1);
+			if ($testColor == $textColor) {
+				return 96;
+			}
 		}
+		return 72;
 	}
 
 	/**
