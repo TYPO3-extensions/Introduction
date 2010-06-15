@@ -132,7 +132,7 @@ class tx_introduction_configuration {
 	}
 
 	/**
-	 * Modifies the passwords of the installtool, be_user and fe_users to the given password
+	 * Modifies the passwords of the installtool and be_user to the given password
 	 *
 	 * @param string $newPassword
 	 * @return void
@@ -145,9 +145,6 @@ class tx_introduction_configuration {
 
 		// Change password of the be_users
 		$GLOBALS['TYPO3_DB']->exec_updateQuery('be_users', '', array('password' => md5($newPassword)));
-
-		// Change password of the fe_users
-		$GLOBALS['TYPO3_DB']->exec_updateQuery('fe_users', '', array('password' => $newPassword));
 	}
 
 	/**
