@@ -3,6 +3,7 @@
 	* Fixed bug #8197: Password of fe_users is not updated anymore
 	* Updated RealURL extension to 1.9.3
 	* Updated Template Auto-parser extension to 0.1.2
+	* Updated tt_news extension to 3.0.1
 
 2010-06-13  Michiel Roos  <michiel@netcreators.com>
 
