@@ -49,6 +49,16 @@ class tx_introduction_import_filestructure {
 	private $defaultColor = '#F18F0B';
 
 	/**
+	 * Resets the sourceDirectory based on the given subpackage
+	 *
+	 * @param string $subpackage
+	 * @return void
+	 */
+	public function setSubpackage($subpackage) {
+		$this->sourceDirectory = 'Resources/Private/Subpackages/' . $subpackage . '/Files';
+	}
+
+	/**
 	 * Copies a directory recursive to another directory
 	 *
 	 * @param string $sourceDirectory

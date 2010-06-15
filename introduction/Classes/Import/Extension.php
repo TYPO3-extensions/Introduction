@@ -72,6 +72,16 @@ class tx_introduction_import_extension {
 	}
 
 	/**
+	 * Resets the sourceDirectory based on the given subpackage
+	 *
+	 * @param string $subpackage
+	 * @return void
+	 */
+	public function setSubpackage($subpackage) {
+		$this->sourceDirectory = 'Resources/Private/Subpackages/' . $subpackage . '/Extensions';
+	}
+
+	/**
 	 * Imports the extension from the t3x file based on the extension key and enables it
 	 *
 	 * @param string $extensionKey

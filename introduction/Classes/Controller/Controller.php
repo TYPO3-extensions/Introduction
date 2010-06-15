@@ -66,23 +66,11 @@ class tx_introduction_controller {
 	private $defaultColor = '#F18F0B';
 
 	/**
-	 * List of extensions to import.
+	 * The default Subpackage to install
 	 *
-	 * @var array
+	 * @var string
 	 */
-	private $extensionsToImport = array(
-		'automaketemplate',
-		'realurl',
-		'tt_news',
-	);
-
-	private $extensionsToEnable = array(
-		'automaketemplate',
-		'realurl',
-		'tt_news',
-		'felogin',
-		'indexed_search',
-	);
+	private $defaultSubpackage = 'Introduction';
 
 	/**
 	 * Handle the incoming steps
@@ -117,12 +105,15 @@ class tx_introduction_controller {
 					break;
 				}
 
-				if (t3lib_div::_GP('systemToInstall') == 'introduction') {
+				if ((t3lib_div::_GP('systemToInstall') != '') && (t3lib_div::_GP('systemToInstall') != 'blank')) {
+					$subpackageToInstall = $this->getValidSubpackage(t3lib_div::_GP('systemToInstall'));
 					$this->configuration->applyDefaultConfiguration();
+					$this->configuration->applySubpackageSpecificConfiguration($subpackageToInstall);
 					$this->configuration->modifyLocalConfFile();
 				}
 
-				$this->performUpdates();
+				$subpackageToInstall = $this->getValidSubpackage(t3lib_div::_GP('subpackage'));
+				$this->performUpdates($subpackageToInstall);
 				$markers['header'] = 'Introduction package';
 				$this->passwordAction($message);
 				break;
@@ -150,15 +141,17 @@ class tx_introduction_controller {
 	/**
 	 * Try to set NegateMask in the localconf.php, import the database structure
 	 *
+	 * @param string $subpackageToInstall
 	 * @return void
 	 */
-	private function performUpdates() {
+	private function performUpdates($subpackageToInstall) {
 		// As we use some GD functions to deterime the negate mask we need to check if GD is available
 		if ($this->installer->isGD()) {
 			$this->configuration->modifyNegateMask();
 		}
 
-		$this->importNeededExtensions();
+		$this->importNeededExtensions($subpackageToInstall);
+		$this->databaseImporter->setSubpackage($subpackageToInstall);
 		$this->databaseImporter->changeCharacterSet();
 		$this->databaseImporter->importDatabase();
 		$baseHref = t3lib_div::getIndpEnv('HTTP_HOST').t3lib_div::getIndpEnv('TYPO3_SITE_PATH');
@@ -166,6 +159,7 @@ class tx_introduction_controller {
 		$baseHref = substr($baseHref, 0, -1);
 		$this->databaseImporter->updateBaseHref($baseHref);
 
+		$this->filestructureImporter->setSubpackage($subpackageToInstall);
 		$this->filestructureImporter->importFiles();
 	}
 
@@ -177,7 +171,20 @@ class tx_introduction_controller {
 	 */
 	public function installPackageAction(&$message) {
 		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Installintroduction.php'));
+		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Subpackage.php'));
+
+		$subpackagesOutput = '';
+		$availableSubpackages = $this->getAvailableSubpackages();
+
+		foreach($availableSubpackages as $subpackage) {
+			$subpackageView = t3lib_div::makeInstance('tx_introduction_view_subpackage');
+			$subpackageView->setSubpackage($subpackage);
+			$subpackagesOutput .= $subpackageView->render();
+		}
+
 		$this->view = t3lib_div::makeInstance('tx_introduction_view_installintroduction');
+
+		$this->view->assign('AVAILABLE_SUBPACKAGES', $subpackagesOutput);
 		$message = $this->view->render();
 	}
 
@@ -271,17 +278,51 @@ class tx_introduction_controller {
 	/**
 	 * Import all the needed extentions and enable them
 	 *
+	 * @param string $subpackageToInstall
 	 * @return void
 	 */
-	private function importNeededExtensions() {
+	private function importNeededExtensions($subpackageToInstall) {
 		$extensionImporter = t3lib_div::makeInstance('tx_introduction_import_extension');
-		foreach ($this->extensionsToImport as $extensionKey) {
+		$extensionImporter->setSubpackage($subpackageToInstall);
+
+		require_once(t3lib_extMgm::extPath('introduction', 'Resources/Private/Subpackages/' . $subpackageToInstall . '/Configuration.php'));
+		foreach ($GLOBALS['subpackageConfiguration']['extensionsToImport'] as $extensionKey) {
 			$extensionImporter->importExtension($extensionKey);
 		}
 
-		foreach ($this->extensionsToEnable as $extensionKey) {
+		foreach ($GLOBALS['subpackageConfiguration']['extensionsToEnable'] as $extensionKey) {
 			$extensionImporter->enableExtension($extensionKey);
 		}
+	}
+
+	/**
+	 * Checks for all available subpackages, based on the Resources/Private/Subpackages directory
+	 * All subpackages should have a Configuration.php
+	 *
+	 * @return array
+	 */
+	private function getAvailableSubpackages() {
+		$availableSubpackages = array();
+		$directories = t3lib_div::get_dirs(t3lib_extMgm::extPath('introduction', 'Resources/Private/Subpackages'));
+		foreach($directories as $directory) {
+			if (file_exists(t3lib_extMgm::extPath('introduction', 'Resources/Private/Subpackages/' . $directory . '/Configuration.php'))) {
+				$availableSubpackages[] = $directory;
+			}
+		}
+		return $availableSubpackages;
+	}
+
+	/**
+	 * Checks if the given subpackage is valid. If not, return the default
+	 *
+	 * @param string $subpackage
+	 * @return string
+	 */
+	private function getValidSubpackage($subpackage) {
+		if (!in_array($subpackage, $this->getAvailableSubpackages())) {
+			return $this->defaultSubpackage;
+		}
+		return $subpackage;
 	}
 }
 ?>

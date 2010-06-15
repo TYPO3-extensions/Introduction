@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2009 Peter Beernink <p.beernink@drecomm.nl>
+*  (c) 2009 Patrick Broens <patrick@patrickbroens.nl>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,13 +24,26 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/**
- * Configuration which will be included to the localconf.php during the installation
- */
-## INSTALL SCRIPT POINT - all lines after this point will be included by the install script. Do not remove!
-$TYPO3_CONF_VARS['BE']['forceCharset'] = 'utf-8';
-$TYPO3_CONF_VARS['SYS']['setDBinit'] = 'SET NAMES utf8;';
-$TYPO3_CONF_VARS['BE']['fileCreateMask'] = '0664';
-$TYPO3_CONF_VARS['BE']['folderCreateMask'] = '2775';
-$TYPO3_CONF_VARS['GFX']['jpg_quality'] = '80';  //  Modified or inserted by TYPO3 Install Tool.
+require_once(t3lib_extMgm::extPath('introduction' , 'Classes/View/Abstract.php'));
+
+class tx_introduction_view_subpackage extends tx_introduction_view_abstract {
+
+	/**
+	 * The template file
+	 *
+	 * @var string
+	 */
+	protected $templateFile = 'typo3conf/ext/introduction/Resources/Private/Templates/Installintroduction.html';
+
+	/**
+	 * Set the subpackage for which the template should be fetched
+	 *
+	 * @param string $subpackage
+	 * @return void
+	 */
+	public function setSubpackage($subpackage) {
+		$this->templateFile = t3lib_extMgm::siteRelPath('introduction') . 'Resources/Private/Subpackages/' . $subpackage . '/Templates/Template.html';
+        }
+}
 ?>
+

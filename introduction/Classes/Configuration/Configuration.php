@@ -126,7 +126,7 @@ class tx_introduction_configuration {
 		}
 
 		// Replace the step in the action, as we would run into a loop.
-		$this->InstallerObject->action = str_replace('step='.$this->InstallerObject->step, 'step='.$this->stepAfterConfigurationUpdate, $this->InstallerObject->action);
+		$this->InstallerObject->action = str_replace('step='.$this->InstallerObject->step, 'step='.$this->stepAfterConfigurationUpdate . '&subpackage=' . t3lib_div::_GP('systemToInstall'), $this->InstallerObject->action);
 
 		$this->InstallerObject->setupGeneral();
 	}
@@ -220,14 +220,39 @@ class tx_introduction_configuration {
 
 	/**
 	 * Sets the default configuration which is needed for this package.
-	 * This includes UTF-8 settings, but also extension settings.
+	 * This includes UTF-8 settings.
 	 *
 	 * @return void
 	 */
 	public function applyDefaultConfiguration() {
+		$this->applyConfigurationFromFile(t3lib_extMgm::extPath('introduction', $this->packageConfigurationPath));
+	}
+
+	/**
+	 * Sets the default configuration which is needed for the choosen subpackage.
+	 * This includes extension specific details
+	 *
+	 * @param string $subpackage
+	 * @return void
+	 */
+	public function applySubpackageSpecificConfiguration($subpackage) {
+		$configurationFile = t3lib_extMgm::extPath('introduction',
+			'Resources/Private/Subpackages/' . $subpackage . '/' . $this->packageConfigurationPath);
+		if (file_exists($configurationFile)) {
+			$this->applyConfigurationFromFile($configurationFile);
+		}
+	}
+
+	/**
+	 * Apply the configuration from the given file
+	 *
+	 * @param string $file
+	 * @return void
+	 */
+	private function applyConfigurationFromFile($file) {
 		$localConfigurationLines = $this->InstallerObject->writeToLocalconf_control();
 
-		$packageConfiguration = explode(chr(10),str_replace(chr(13),'',trim(t3lib_div::getUrl(t3lib_extMgm::extPath('introduction', $this->packageConfigurationPath)))));
+		$packageConfiguration = explode(chr(10),str_replace(chr(13),'',trim(t3lib_div::getUrl($file))));
 		// Remove the PHP ending tag
 		array_pop($packageConfiguration);
 		// Strip off everything till our starting point

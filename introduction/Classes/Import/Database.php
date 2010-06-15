@@ -51,6 +51,16 @@ class tx_introduction_import_database {
 	}
 
 	/**
+	 * Resets the sqlLocation based on the given subpackage
+	 *
+	 * @param string $subpackage
+	 * @return void
+	 */
+	public function setSubpackage($subpackage) {
+		$this->sqlLocation = 'Resources/Private/Subpackages/' . $subpackage . '/Database/introduction.sql';
+	}
+
+	/**
 	 * Changes the character set and collation of the database to the given configuration
 	 *
 	 * @param string $characterSet Default utf8
@@ -91,6 +101,9 @@ class tx_introduction_import_database {
 	 * @return void
 	 */
 	public function importDatabase() {
+		if (!file_exists(t3lib_extMgm::extPath('introduction', $this->sqlLocation))) {
+			return;
+		}
 		$fileContents = t3lib_div::getUrl(t3lib_extMgm::extPath('introduction', $this->sqlLocation));
 
 		$statements = $this->installer->getStatementArray($fileContents,1);

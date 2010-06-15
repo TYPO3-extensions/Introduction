@@ -99,7 +99,7 @@ abstract class tx_introduction_view_abstract {
 			}
 			$this->template = $this->contentObject->substituteSubpart($this->template, '###'.$key.'_REMOVEWHENEMPTY###', $subpart);
 		}
-		$this->template = $this->contentObject->substituteMarkerArray($this->template, $this->contentObject->fillInMarkerArray(array(), $this->assignedVariables, '', true, ''), '', false, true);
+		$this->template = $this->contentObject->substituteMarkerArray($this->template, $this->contentObject->fillInMarkerArray(array(), $this->assignedVariables, '', FALSE, ''), '', false, true);
 	}
 
 	/**

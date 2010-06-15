@@ -16,9 +16,7 @@
 			<p>Please select the package you want to install for your TYPO3 System.</p>
 			<form action="index.php?TYPO3_INSTALL[type]=database&mode=123&step=5" method="post">
 				<fieldset class="t3-install-form-label-after">
-					<input id="systemToInstallIntroduction" type="radio" name="systemToInstall" value="introduction" checked="checked" />
-					<label for="systemToInstallIntroduction"><strong>Introduction package (recommended)</strong><br />
-					This will install a TYPO3 system including a demo website with all basic configuration, content elements and a few extensions.</label><br />
+					###AVAILABLE_SUBPACKAGES###
 					<input id="systemToInstallEmpty" type="radio" name="systemToInstall" value="blank" />
 					<label for="systemToInstallEmpty"><strong>Blank System</strong><br />
 					This will install a bare TYPO3 system with basic database and folder structure.</label>

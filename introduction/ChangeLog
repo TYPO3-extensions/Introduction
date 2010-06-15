@@ -4,6 +4,7 @@
 	* Updated RealURL extension to 1.9.3
 	* Updated Template Auto-parser extension to 0.1.2
 	* Updated tt_news extension to 3.0.1
+	* Feature #8245: Added the possibility to use subpackages. Changed directory structure for this.
 
 2010-06-13  Michiel Roos  <michiel@netcreators.com>
 
