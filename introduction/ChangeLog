@@ -1,3 +1,7 @@
+2010-06-13  Michiel Roos  <michiel@netcreators.com>
+
+	* Fixed bug #7610: Error while on the extra step (accidentally committed earlier)
+
 2010-06-15  Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Fixed bug #8197: Password of fe_users is not updated anymore
