@@ -5,7 +5,7 @@ OUTPUTFILE=introduction.sql
 USER=root
 PASSWORD=1234
 
-mysqldump -u ${USER} -p${PASSWORD} --disable-keys --delayed-insert --skip-quote-names ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
+mysqldump -u ${USER} -p${PASSWORD} --disable-keys --skip-quote-names ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
 
 # Comment absRefPrefix
 sed "s/absRefPrefix/\# absRefPrefix/g" ${OUTPUTFILE}_dump > ${OUTPUTFILE}_absRefPrefix
