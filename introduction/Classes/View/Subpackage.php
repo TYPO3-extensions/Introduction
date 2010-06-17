@@ -43,7 +43,15 @@ class tx_introduction_view_subpackage extends tx_introduction_view_abstract {
 	 */
 	public function setSubpackage($subpackage) {
 		$this->templateFile = t3lib_extMgm::siteRelPath('introduction') . 'Resources/Private/Subpackages/' . $subpackage . '/Templates/Template.html';
-        }
+	}
+
+	public function renderProgressMessage() {
+		$html = @file_get_contents(PATH_site . $this->templateFile);
+		$this->template = $this->contentObject->getSubpart($html, '###PROGRESS_MESSAGE###');
+
+		$this->applyAssignedVariables();
+		return $this->template;
+	}
 }
 ?>
 

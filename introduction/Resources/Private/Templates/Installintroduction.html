@@ -13,8 +13,21 @@
 		<div>
 			<h2>Choose a package</h2>
 			<!-- ###TEMPLATE### begin-->
+		<script language="javascript">
+			//<![CDATA[
+			function displayInstallationInProgress() {
+				var systemToInstall = $$('input[name=systemToInstall]:checked').first().value;
+
+				$$('#t3-install-box-body h3')[0].replace('<h3>Installation now in progress...</h3>');
+				$('chooseSubpackage').hide();
+				$('installationInProgress_'+systemToInstall).show();
+				$('installationInProgressLoader').show();
+			}
+			//]]>
+		</script>
+		<div id="chooseSubpackage">
 			<p>Please select the package you want to install for your TYPO3 System.</p>
-			<form action="index.php?TYPO3_INSTALL[type]=database&mode=123&step=5" method="post">
+			<form action="index.php?TYPO3_INSTALL[type]=database&mode=123&step=5" method="post" onsubmit="displayInstallationInProgress(); return true;">
 				<fieldset class="t3-install-form-label-after">
 					###AVAILABLE_SUBPACKAGES###
 					<input id="systemToInstallEmpty" type="radio" name="systemToInstall" value="blank" />
@@ -27,6 +40,16 @@
 					<button>Continue<span class="t3-install-form-button-icon-positive">&nbsp;</span></button>
 				</fieldset>
 			</form>
+		</div>
+		<div id="installationInProgress_blank" style="display:none">
+			<strong>- Setting up the database </strong>
+		</div>
+		###AVAILABLE_SUBPACKAGES_INSTALLMESSAGES###
+		<div id="installationInProgressLoader" style="display:none; margin-top: 30px;">
+			<div style="float: left; margin-right: 15px;"><img src="###PATH_TO_RESOURCES###/Images/ajax-loader.gif" /></div>
+			<div style="float: left; margin-top: -3px;">This could take a few minutes,<br />please wait, the server tries its best.</div>
+			<div style="clear: both; padding-bottom: 10px;"></div>
+		</div>
 			<!-- ###TEMPLATE### end-->
 		</div>
 	</body>

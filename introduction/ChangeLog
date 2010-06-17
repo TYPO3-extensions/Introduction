@@ -1,3 +1,11 @@
+2010-06-17  Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Feature #8296: A message is displayed telling the user that the installation is in progress.
+
+2010-06-16  Peter Beernink  <p.beernink@drecomm.nl>
+
+	* Removed DELAYED from INSERT statements
+
 2010-06-13  Michiel Roos  <michiel@netcreators.com>
 
 	* Fixed bug #7610: Error while on the extra step (accidentally committed earlier)

@@ -32,7 +32,7 @@ abstract class tx_introduction_view_abstract {
 	 *
 	 * @var tslib_cObj
 	 */
-	private $contentObject;
+	protected $contentObject;
 
 	/**
 	 * The HTML template
@@ -90,7 +90,7 @@ abstract class tx_introduction_view_abstract {
 	 * Remove any subparts which are used for wrapping when var
 	 * @return unknown_type
 	 */
-	private function applyAssignedVariables() {
+	protected function applyAssignedVariables() {
 		// Check if we have any subparts to remove when empty
 		foreach ($this->assignedVariables as $key => $value) {
 			$subpart = $this->contentObject->getSubpart($this->template, '###'.$key.'_REMOVEWHENEMPTY###');

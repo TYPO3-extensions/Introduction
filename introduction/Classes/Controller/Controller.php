@@ -174,17 +174,20 @@ class tx_introduction_controller {
 		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Subpackage.php'));
 
 		$subpackagesOutput = '';
+		$subpackagesProgressOutput = '';
 		$availableSubpackages = $this->getAvailableSubpackages();
 
 		foreach($availableSubpackages as $subpackage) {
 			$subpackageView = t3lib_div::makeInstance('tx_introduction_view_subpackage');
 			$subpackageView->setSubpackage($subpackage);
 			$subpackagesOutput .= $subpackageView->render();
+			$subpackagesProgressOutput .= $subpackageView->renderProgressMessage();
 		}
 
 		$this->view = t3lib_div::makeInstance('tx_introduction_view_installintroduction');
 
 		$this->view->assign('AVAILABLE_SUBPACKAGES', $subpackagesOutput);
+		$this->view->assign('AVAILABLE_SUBPACKAGES_INSTALLMESSAGES', $subpackagesProgressOutput);
 		$message = $this->view->render();
 	}
 
