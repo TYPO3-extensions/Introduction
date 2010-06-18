@@ -5,10 +5,14 @@ OUTPUTFILE=introduction.sql
 USER=root
 PASSWORD=1234
 
+# Only dump the backend users we need
+mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_users_shadow; CREATE TABLE be_users_shadow SELECT * FROM be_users WHERE uid IN(2,3,4);'
 
-mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_users_shadow; CREATE TABLE be_users_shadow SELECT * FROM be_users WHERE uid IN(2,3,4)'
-
+# Dump the tables we need
 mysqldump -u ${USER} -p${PASSWORD} --disable-keys --skip-quote-names ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
+
+# Cleanup temporary table
+mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_users_shadow;'
 
 # Rename table be_users_shadow to be_users
 sed "s/be_users_shadow/be_users/g" ${OUTPUTFILE}_dump > ${OUTPUTFILE}_shadow
