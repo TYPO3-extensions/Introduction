@@ -12,13 +12,14 @@
 # typo3conf/ext/introduction/Resources/Private/Subpackages/Introduction/Database
 
 packagename="introductionpackage"
-#packageversion="4.4.0beta2"
-#corerepository="tags/TYPO3_4-4-0beta2"
-#dummypackageversion="4.4.0beta2"
 
-packageversion="4.4-latest"
-corerepository="trunk"
-dummypackageversion="4.4.0beta3"
+#packageversion="4.4-latest"
+#corerepository="trunk"
+#dummypackageversion="4.4.0RC1"
+
+packageversion="4.4.0-rc1"
+corerepository="tags/TYPO3_4-4-0RC1"
+dummypackageversion="4.4.0RC1"
 
 cd /home/ldx/tmp/packages
 mkdir $packagename-$packageversion
