@@ -68,6 +68,10 @@ class tx_introduction_import_database {
 	 * @return void
 	 */
 	public function changeCharacterSet($characterSet = 'utf8' , $collation = 'utf8_general_ci') {
+			// DBAL should be properly configured
+		if (t3lib_extMgm::isLoaded('dbal')) {
+			return;
+		}
 		$tables = array_keys($GLOBALS['TYPO3_DB']->admin_get_tables());
 		foreach ($tables as $table) {
 			// Change default character set
@@ -85,11 +89,11 @@ class tx_introduction_import_database {
 				if ($field['Default'] === NULL && $field['Null'] == 'YES' ) {
 					$default = ' DEFAULT NULL ';
 				} elseif ($field['Default'] != '') {
-					$default = ' DEFAULT \''.mysql_real_escape_string($field['Default']).'\'';
+					$default = ' DEFAULT '.$GLOBALS['TYPO3_DB']->fullQuoteStr($field['Default']);
 				} else {
 					$default = '';
 				}
-				$fieldName = mysql_real_escape_string($field['Field']);
+				$fieldName = $GLOBALS['TYPO3_DB']->quoteStr($field['Field']);
 				$GLOBALS['TYPO3_DB']->admin_query('ALTER TABLE `'.$table.'` CHANGE `'.$fieldName.'` `'.$fieldName.'` '.$field['Type'].' CHARACTER SET '.$characterSet.' COLLATE '.$collation.' '.$nullable.' '.$default);
 			}
 		}
