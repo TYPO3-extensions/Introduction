@@ -1,6 +1,7 @@
 2010-06-21  Ingo Renner  <ingo@typo3.org>
 
 	* Fixed the indexedsearch HTML template, missing some id parameters
+	* Added an id parameter to the felogin login-form form tag
 
 2010-06-20  Peter Beernink  <p.beernink@drecomm.nl>
 

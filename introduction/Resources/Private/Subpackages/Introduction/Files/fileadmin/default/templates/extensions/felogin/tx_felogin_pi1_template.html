@@ -51,7 +51,7 @@
 ###STATUS_HEADER###
 ###STATUS_MESSAGE###
 <!-- ###LOGIN_FORM### -->
-<form action="###ACTION_URI###" target="_top" method="post" onsubmit="###ON_SUBMIT###">
+<form action="###ACTION_URI###" target="_top" method="post" onsubmit="###ON_SUBMIT###" id="tx_felogin_loginform">
 	<fieldset>
 	<legend>###LEGEND###</legend>
 	<div>
@@ -62,7 +62,7 @@
 		<label for="pass">###PASSWORD_LABEL###</label>
 		<input type="password" id="pass" name="pass" value="" />
 	</div>
-	
+
 	<!--###PERMALOGIN_VALID###-->
 		<div>
 			<label for="permalogin">###PERMALOGIN###</label>
@@ -70,8 +70,8 @@
 			<input name="permalogin" value="1" type="checkbox" ###PERMALOGIN_CHECKBOX_ATTRIBUTES### id="permalogin"  onclick="document.getElementById('permaloginHiddenField').disabled = this.checked;" />
 		</div>
 	<!--###PERMALOGIN_VALID###-->
-	
-	<div>	
+
+	<div>
 		<input type="submit" name="submit" value="###LOGIN_LABEL###" />
 	</div>
 
@@ -119,8 +119,8 @@
 	<div>
 		<input type="submit" name="submit" value="###LOGOUT_LABEL###" />
 	 </div>
-	
-	<div class="felogin-hidden"> 
+
+	<div class="felogin-hidden">
 		<input type="hidden" name="logintype" value="logout" />
 		<input type="hidden" name="pid" value="###STORAGE_PID###" />
 		<input type="hidden" name="###PREFIXID###[noredirect]" value="###NOREDIRECT###" />
@@ -190,7 +190,7 @@
 </form>
 <!-- ###CHANGEPASSWORD_FORM### -->
 ###BACKLINK_LOGIN###
-<!--###TEMPLATE_CHANGEPASSWORD###--> 
+<!--###TEMPLATE_CHANGEPASSWORD###-->
 
 
 
