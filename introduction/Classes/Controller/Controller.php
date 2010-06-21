@@ -216,8 +216,8 @@ class tx_introduction_controller {
 
 		$this->view->assign('CHECK_REAL_URL_COMPLIANCE_URL' , '');
 		if ($this->configuration->isModRewriteEnabled()) {
-				// check for existing htaccess file, create one if it does not exist
-			if ($this->filestructureImporter->createHtAccessFile()) {
+			// Try to copy _.htaccess to .htaccess
+			if ($this->filestructureImporter->copyHtAccessFile()) {
 				$this->view->assign('CHECK_REAL_URL_COMPLIANCE_URL' , t3lib_div::getIndpEnv('TYPO3_SITE_URL').$this->realURLTestPath);
 			}
 		}
