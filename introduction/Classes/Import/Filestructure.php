@@ -94,6 +94,34 @@ class tx_introduction_import_filestructure {
 	}
 
 	/**
+	 * Tries to create the .htaccess file but only if not existing already
+	 *
+	 * @return boolean whether or not successfully created
+	 */
+	public function createHtAccessFile() {
+		$success = file_exists(PATH_site.'.htaccess');
+		if (!$success) {
+			$htaccessContent = '<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Prevent serving TYPO3 404 pages for missing files
+RewriteRule ^(typo3(conf|temp)?|fileadmin|uploads|t3lib|clear.gif|index.php|favicon.ico) - [L]
+
+# Do not rewrite static resources
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule .* - [L]
+
+# Rewrite the rest to index.php
+RewriteRule .* index.php [L]
+</IfModule>';
+			$success = t3lib_div::writeFile(PATH_site . '.htaccess', $htaccessContent);
+		}
+		return $success;
+	}
+
+	/**
 	 * Tries to copy the _.htaccess file to .htaccess but only if not existing already
 	 *
 	 * @return boolean whether or not successfully copied
