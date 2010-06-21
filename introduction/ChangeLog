@@ -1,3 +1,7 @@
+2010-06-21  Ingo Renner  <ingo@typo3.org>
+
+	* Fixed the indexedsearch HTML template, missing some id parameters
+
 2010-06-20  Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Fixed bug #7944: Removed the use of mysql_real_escape_string in favour of fullQuoteStr()
@@ -87,7 +91,7 @@
 2010-04-07 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Made the hooks compatible with the new install tool. Addresses #7125. Some tweaking needed.
- 
+
 2010-03-31 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Added the generated realurl_autoconf.php which now includes configuration for tt_news. Fixes #6905.
@@ -99,7 +103,7 @@
 2010-02-14 Daniel Bruessler  <mail@danielbruessler.de>
 
 	* Added the first version of manual.sxw, for diff: manual.txt
-	
+
 2009-11-20 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Added method to change datababase character set
@@ -118,7 +122,7 @@
 	* The color is modified in the CSS to the choosen color
 	* Modified the importDatabase function
 	* Added a preview icon next to the colorpicker
-	
+
 2009-11-18 Peter Beernink  <p.beernink@drecomm.nl>
 
 	* Minor bugfix: Wrong characterset was written into the localconf.php
@@ -152,7 +156,7 @@
 	* Refactored the way the localconf.php was updated, by using the tx_install->setupGeneral()
 	* Added method to try automatically set ImageMagick settings
 	* localconf.php is updated when the additional steps are executed.
-	
+
 2009-11-16 Patrick Broens  <patrick@patrickbroens.nl>
 
 	* Moved Classes/Installer.php to Classes/Controller
@@ -161,5 +165,5 @@
 
 2009-11-15 Peter Beernink  <p.beernink@drecomm.nl>
 
-	* Initial code generated with kickstarter, restructured file structure 
+	* Initial code generated with kickstarter, restructured file structure
 	* Created basic hook implementation
