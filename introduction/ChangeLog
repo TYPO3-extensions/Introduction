@@ -2,6 +2,7 @@
 
 	* Fixed the indexedsearch HTML template, missing some id parameters
 	* Added an id parameter to the felogin login-form form tag
+	* Fixed the felogin login-form, the submit button was named "submit", so that the submit() method of the form could not be called
 
 2010-06-20  Peter Beernink  <p.beernink@drecomm.nl>
 
