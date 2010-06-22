@@ -8,3 +8,7 @@ div#main {
 body.hideRightColumn div#main {
 	width:78%;
 }
+div#footer #licensebadge {
+	margin-top: 3px;
+	filter:alpha(opacity=30);
+	}

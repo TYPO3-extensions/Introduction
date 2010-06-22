@@ -119,13 +119,21 @@ div#secondary {
 div#footer {
 	background:url(../images/bg_footer.jpg) top center no-repeat;
 	}
-div#footer .footerFrame {
+div#footer .footerFrame,
+div#footer .footerFrame-last {
 	float:left;
 	width: 200px;
 	margin: 0 0 0 20px;
 	}
-div#footer .footerFrame h5 { 
+div#footer .footerFrame-last {
+	width: 410px;
+	}
+div#footer .footerFrame h4 { 
 	margin: 0 0 1em 0;
+	}
+div#footer #licensebadge {
+	margin-top: 3px;
+	opacity: 0.3;
 	}
 div#topMenu ul li, div#languageMenu ul li {
 	display:inline;
