@@ -13,13 +13,13 @@
 
 packagename="introductionpackage"
 
-#packageversion="4.4-latest"
-#corerepository="trunk"
-#dummypackageversion="4.4.0RC1"
+packageversion="4.4.0RC2"
+corerepository="tags/TYPO3_4-4-0RC2"
+dummypackageversion="4.4.0RC2"
 
-packageversion="4.4.0-rc1"
-corerepository="tags/TYPO3_4-4-0RC1"
-dummypackageversion="4.4.0RC1"
+packageversion="4.4.0-latest"
+corerepository="trunk"
+dummypackageversion="4.4.0RC2"
 
 cd /home/ldx/tmp/packages
 mkdir $packagename-$packageversion
@@ -59,16 +59,31 @@ echo "<?php
 
 ?>" > typo3conf/localconf.php
 
-# create ENABLE_INSTALL_TOOL file
-# Waiting for issue http://bugs.typo3.org/view.php?id=14719 to land in the core
-# When that is fixed, this line must be removed
-touch typo3conf/ENABLE_INSTALL_TOOL
+# create .htaccess
+echo "<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Prevent serving TYPO3 404 pages for missing files
+RewriteRule ^(typo3(conf|temp)?|fileadmin|uploads|t3lib|clear.gif|index.php|favicon.ico) - [L]
+
+# Do not rewrite static resources
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule .* - [L]
+
+# Rewrite the rest to index.php
+RewriteRule .* index.php [L]
+</IfModule>" > .htaccess
+
+# create FIRST_INSTALL file
+touch typo3conf/FIRST_INSTALL
 
 # sanitize permissions
 chmod -R g+w typo3temp/ typo3conf/ uploads/ fileadmin/
 chown -R :www-data fileadmin/ typo3conf/ typo3temp/ uploads/
 
 # Zip it up
-zip -9r -q ../$packagename-$packageversion.zip *
+zip -9r -q ../$packagename-$packageversion.zip .htaccess *
 cd ..
 rm -rf $packagename-$packageversion
