@@ -6,7 +6,7 @@ USER=root
 PASSWORD=1234
 
 # Only dump the backend users we need
-mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_users_shadow; CREATE TABLE be_users_shadow SELECT * FROM be_users WHERE uid IN(2,3,4);'
+mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_users_shadow; CREATE TABLE be_users_shadow SELECT * FROM be_users WHERE uid IN(2,3,4); ALTER TABLE be_users_shadow ADD PRIMARY KEY (uid), ADD KEY parent (pid), ADD KEY username (username);ALTER TABLE be_users_shadow CHANGE uid uid INT(11) unsigned NOT NULL auto_increment;'
 
 # Dump the tables we need
 mysqldump -u ${USER} -p${PASSWORD} --disable-keys --skip-quote-names ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
@@ -17,8 +17,12 @@ mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_
 # Rename table be_users_shadow to be_users
 sed "s/be_users_shadow/be_users/g" ${OUTPUTFILE}_dump > ${OUTPUTFILE}_shadow
 
+# Remove character set from table copy
+sed "s/ CHARACTER SET utf8//g" ${OUTPUTFILE}_shadow> ${OUTPUTFILE}_character
+sed "s/ DEFAULT CHARSET=latin1/ DEFAULT CHARSET=utf8/g" ${OUTPUTFILE}_character> ${OUTPUTFILE}_character2
+
 # Comment absRefPrefix
-sed "s/absRefPrefix/\# absRefPrefix/g" ${OUTPUTFILE}_shadow > ${OUTPUTFILE}_absRefPrefix
+sed "s/absRefPrefix/\# absRefPrefix/g" ${OUTPUTFILE}_character2 > ${OUTPUTFILE}_absRefPrefix
 
 # Replace ENABLE REALURL
 sed "s/tx_realurl_enable = 1/tx_realurl_enable = \#\#\#ENABLE_REALURL\#\#\#/g" ${OUTPUTFILE}_absRefPrefix > ${OUTPUTFILE}_realURL
@@ -27,4 +31,4 @@ sed "s/tx_realurl_enable = 1/tx_realurl_enable = \#\#\#ENABLE_REALURL\#\#\#/g" $
 sed "s/domain = [^\\]*/domain = ###HOSTNAME_AND_PATH###/g" ${OUTPUTFILE}_realURL > ${OUTPUTFILE}
 
 # Cleanup
-rm ${OUTPUTFILE}_absRefPrefix ${OUTPUTFILE}_dump ${OUTPUTFILE}_realURL ${OUTPUTFILE}_shadow
+rm ${OUTPUTFILE}_absRefPrefix ${OUTPUTFILE}_character ${OUTPUTFILE}_character2 ${OUTPUTFILE}_dump ${OUTPUTFILE}_realURL ${OUTPUTFILE}_shadow
