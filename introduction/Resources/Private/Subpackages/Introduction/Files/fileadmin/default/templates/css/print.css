@@ -6,7 +6,7 @@ div#navigationFirstLevel, div#navigationSecondLevel, div#topMenu, div#searchBox,
 div.footerFrame:first-child {display:block !important;}
 div#outerWrap { width:auto; margin:0;}
 div#contentWrap { background:none;}
-div#header { background:none !important;  height:auto; background-color:none; margin:0;}
+div#header { background:none !important;  height:auto; background-color:transparent; margin:0;}
 div#header h1 { color:#333; margin-top:0; position:inherit; margin-left:0; font-size:300%; font-weight:bold; line-height:1.3em;}
 div#footer { background:none; color:#333; font-size:80%;}
 div#main { float:left; width:100%;}
