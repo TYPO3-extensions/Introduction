@@ -1,3 +1,7 @@
+2010-07-27  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #8599: 1-2-3 installer not working in Internet Explorer 7
+
 2010-06-21  Ingo Renner  <ingo@typo3.org>
 
 	* Fixed the indexedsearch HTML template, missing some id parameters
