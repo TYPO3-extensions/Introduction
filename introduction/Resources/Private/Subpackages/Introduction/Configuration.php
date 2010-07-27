@@ -29,6 +29,7 @@ $GLOBALS['subpackageConfiguration'] = array(
 		'automaketemplate',
 		'realurl',
 		'tt_news',
+		'wt_spamshield',
 	),
 	'extensionsToEnable' => array(
 		'automaketemplate',
@@ -36,6 +37,7 @@ $GLOBALS['subpackageConfiguration'] = array(
 		'tt_news',
 		'felogin',
 		'indexed_search',
+		'wt_spamshield',
 	),
 )
 ?>

@@ -2,3 +2,4 @@ The following extensions and versions are available:
 automaketemplate: 0.1.2
 realurl: 1.9.3
 tt_news: 3.0.1
+wt_spamshield 0.6.1

@@ -2,6 +2,7 @@
 
 	* Fixed bug #8599: 1-2-3 installer not working in Internet Explorer 7
 	* Resolved issue #8775: Unit tests hould not be in package
+	* Resolved issue #8399: Added the wt_spamshield extension for spam prevention of the contact form
 
 2010-06-21  Ingo Renner  <ingo@typo3.org>
 
