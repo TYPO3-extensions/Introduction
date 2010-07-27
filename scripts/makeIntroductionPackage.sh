@@ -18,8 +18,8 @@ corerepository="tags/TYPO3_4-4-0RC2"
 dummypackageversion="4.4.0RC2"
 
 packageversion="4.4.0-latest"
-corerepository="trunk"
-dummypackageversion="4.4.0RC2"
+corerepository="tags/TYPO3_4-4-0"
+dummypackageversion="4.4.0"
 
 cd /home/ldx/tmp/packages
 mkdir $packagename-$packageversion
@@ -36,6 +36,9 @@ rmdir dummy-$dummypackageversion
 svn -q export https://svn.typo3.org/TYPO3v4/Core/$corerepository/ typo3_src
 mv -f typo3_src/* .
 rmdir typo3_src
+
+# Remove tests directory
+rm -rf tests/
 
 # fetch introduction package data
 # see http://forge.typo3.org/repositories/show/extension-introduction 

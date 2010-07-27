@@ -1,6 +1,7 @@
 2010-07-27  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #8599: 1-2-3 installer not working in Internet Explorer 7
+	* Resolved issue #8775: Unit tests hould not be in package
 
 2010-06-21  Ingo Renner  <ingo@typo3.org>
 
