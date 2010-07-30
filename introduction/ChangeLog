@@ -1,3 +1,7 @@
+2010-07-30  Ben van 't Ende <ben@typo3.org>
+
+	* Fixed bug #9016: Changed "int+" to "string" in Template "ROOT" on page "TypoScript Templates" for menu.top.pages and plugin.tt_news.pid_list
+
 2010-07-29  Ben van 't Ende <ben@typo3.org>
 
 	* Fixed bug #9076: Added news and news categories to Tables (modify) to Backend usergroup "Advanced editors". Also removed Alternative Page Language and Internal Note form Tables (listing) as these were already listed in Tables (modify).
