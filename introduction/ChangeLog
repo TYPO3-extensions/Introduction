@@ -1,3 +1,7 @@
+2010-09-17  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #9439: Checked for the TYPO3 version to determine the EM location
+
 2010-06-02  Ben van 't Ende <ben@typo3.org>
 
 	* Fixed bug #9097: Changed title attribute on link from 'title="TYPO3 Open Source ECMS"' to 'title="TYPO3 Open Source CMS"'

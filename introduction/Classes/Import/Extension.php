@@ -24,7 +24,14 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-require_once(PATH_site . TYPO3_mainDir . 'mod/tools/em/class.em_terconnection.php');
+
+if (t3lib_div::int_from_ver(TYPO3_version) >= 4005000) {
+	define('TYPO3_EM_PATH', PATH_site . TYPO3_mainDir . 'sysext/em/mod1/');
+} else {
+	define('TYPO3_EM_PATH', PATH_site . TYPO3_mainDir . 'mod/tools/em/');
+}
+
+require_once(TYPO3_EM_PATH . 'class.em_terconnection.php');
 
 class tx_introduction_import_extension {
 
@@ -53,7 +60,7 @@ class tx_introduction_import_extension {
 		$GLOBALS['LANG'] = t3lib_div::makeInstance('language');
 		$GLOBALS['LANG']->csConvObj = t3lib_div::makeInstance('t3lib_cs');
 
-		require_once(PATH_site . TYPO3_mainDir . 'mod/tools/em/class.em_index.php');
+		require_once(TYPO3_EM_PATH . 'class.em_index.php');
 		$this->extensionManager = t3lib_div::makeInstance('SC_mod_tools_em_index');
 
 		// Setting paths of install scopes for the extensionManager
