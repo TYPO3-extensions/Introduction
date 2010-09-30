@@ -1,3 +1,7 @@
+2010-09-30  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug which caused the introduction package to generate a blank page on some installations.
+ 
 2010-09-17  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #9439: Checked for the TYPO3 version to determine the EM location

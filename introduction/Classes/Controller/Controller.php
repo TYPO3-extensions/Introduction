@@ -254,6 +254,8 @@ class tx_introduction_controller {
 	 */
 	public function finishAction(&$message) {
 		require_once(t3lib_extMgm::extPath('introduction', 'Classes/View/Finish.php'));
+		
+		$this->clearCache();
 
 		// Enable or disable realURL
 		$this->databaseImporter->updateRealURLConfiguration(t3lib_div::_GP('useRealURL'));
@@ -326,6 +328,25 @@ class tx_introduction_controller {
 			return $this->defaultSubpackage;
 		}
 		return $subpackage;
+	}
+	
+	/**
+	 * Clears the TYPO3 cache by creating a BE session
+	 *
+	 * @return void
+	 */
+	private function clearCache() {
+	    	// make sure we have the cacheFilePrefix set
+		if (is_null($GLOBALS['TYPO3_LOADED_EXT']['_CACHEFILE'])) {
+			$GLOBALS['TYPO3_LOADED_EXT']['_CACHEFILE'] = t3lib_extMgm::getCacheFilePrefix();
+		}
+		$simulatedBackendUser = t3lib_div::makeInstance('t3lib_beUserAuth');
+		$simulatedBackendUser->start();
+		$simulatedBackendUser->setBeUserByName('admin');
+
+		$tce = t3lib_div::makeInstance('t3lib_TCEmain');
+		$tce->start('', '', $simulatedBackendUser);
+		$tce->clear_cacheCmd('all');
 	}
 }
 ?>
