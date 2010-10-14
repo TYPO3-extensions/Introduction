@@ -1,3 +1,7 @@
+2010-10-14  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Removed doc/wizard_from.* files. Resolves #10140
+
 2010-09-30  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug which caused the introduction package to generate a blank page on some installations.
