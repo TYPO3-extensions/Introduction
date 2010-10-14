@@ -1,5 +1,8 @@
 #!/bin/sh
 TABLES="be_groups be_users_shadow fe_groups fe_users index_fulltext index_grlist index_phash index_rel index_section index_stat_word index_words pages pages_language_overlay sys_be_shortcuts sys_filemounts sys_language sys_refindex sys_template tt_content tt_news tt_news_cat tt_news_cat_mm tx_realurl_pathcache tx_realurl_uniqalias tx_realurl_urldecodecache tx_realurl_urlencodecache"
+
+# Tables which have a field deleted. Used to clean up deleted records before exporting
+CLEANUP_TABLES="be_groups be_users_shadow fe_groups fe_users pages pages_language_overlay sys_filemounts sys_refindex sys_template tt_content tt_news tt_news_cat"
 DATABASE=typo3
 OUTPUTFILE=introduction.sql
 USER=root
@@ -7,6 +10,12 @@ PASSWORD=1234
 
 # Only dump the backend users we need
 mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e 'DROP TABLE IF EXISTS be_users_shadow; CREATE TABLE be_users_shadow SELECT * FROM be_users WHERE uid IN(2,3,4); ALTER TABLE be_users_shadow ADD PRIMARY KEY (uid), ADD KEY parent (pid), ADD KEY username (username);ALTER TABLE be_users_shadow CHANGE uid uid INT(11) unsigned NOT NULL auto_increment;'
+
+# Remove deleted records
+for table in ${CLEANUP_TABLES}
+do
+	mysql -u ${USER} --password=${PASSWORD} ${DATABASE} -e "DELETE FROM ${table} WHERE deleted=1;"
+done
 
 # Dump the tables we need
 mysqldump -u ${USER} -p${PASSWORD} --disable-keys --skip-quote-names ${DATABASE} ${TABLES} | sed 's/AUTO_INCREMENT=[0-9]* //' > ${OUTPUTFILE}_dump
