@@ -1,8 +1,8 @@
 #!/bin/sh
-TABLES="be_groups be_users_shadow fe_groups fe_users index_fulltext index_grlist index_phash index_rel index_section index_stat_word index_words pages pages_language_overlay sys_be_shortcuts sys_filemounts sys_language sys_refindex sys_template tt_content tt_news tt_news_cat tt_news_cat_mm tx_realurl_pathcache tx_realurl_uniqalias tx_realurl_urldecodecache tx_realurl_urlencodecache"
+TABLES="be_groups be_users_shadow fe_groups fe_users index_fulltext index_grlist index_phash index_rel index_section index_stat_word index_words pages pages_language_overlay sys_be_shortcuts sys_filemounts sys_language sys_news sys_refindex sys_template tt_content tt_news tt_news_cat tt_news_cat_mm tx_realurl_pathcache tx_realurl_uniqalias tx_realurl_urldecodecache tx_realurl_urlencodecache"
 
 # Tables which have a field deleted. Used to clean up deleted records before exporting
-CLEANUP_TABLES="be_groups be_users_shadow fe_groups fe_users pages pages_language_overlay sys_filemounts sys_refindex sys_template tt_content tt_news tt_news_cat"
+CLEANUP_TABLES="be_groups be_users_shadow fe_groups fe_users pages pages_language_overlay sys_filemounts sys_news sys_refindex sys_template tt_content tt_news tt_news_cat"
 DATABASE=typo3
 OUTPUTFILE=introduction.sql
 USER=root
