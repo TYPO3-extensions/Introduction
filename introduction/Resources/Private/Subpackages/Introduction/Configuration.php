@@ -30,6 +30,7 @@ $GLOBALS['subpackageConfiguration'] = array(
 		'realurl',
 		'tt_news',
 		'wt_spamshield',
+		'jquerycolorbox',
 	),
 	'extensionsToEnable' => array(
 		'automaketemplate',
@@ -38,6 +39,7 @@ $GLOBALS['subpackageConfiguration'] = array(
 		'felogin',
 		'indexed_search',
 		'wt_spamshield',
+		'jquerycolorbox',
 	),
 )
 ?>

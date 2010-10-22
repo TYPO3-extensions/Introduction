@@ -1,3 +1,8 @@
+2010-10-22  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #10356: Added a new SQL file with the lightbox configuration and sample sys_news records
+	* Resolved issue #9699: Added the jquerycolorbox extension
+
 2010-10-14  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Removed doc/wizard_from.* files. Resolves #10140
