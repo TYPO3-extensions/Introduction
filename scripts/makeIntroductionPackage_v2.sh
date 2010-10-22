@@ -48,21 +48,7 @@ echo "<?php
 ?>" > typo3conf/localconf.php
 
 # create .htaccess
-echo "<IfModule mod_rewrite.c>
-RewriteEngine On
-
-# Prevent serving TYPO3 404 pages for missing files
-RewriteRule ^(typo3(conf|temp)?|fileadmin|uploads|t3lib|clear.gif|index.php|favicon.ico) - [L]
-
-# Do not rewrite static resources
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d [OR]
-RewriteCond %{REQUEST_FILENAME} -l
-RewriteRule .* - [L]
-
-# Rewrite the rest to index.php
-RewriteRule .* index.php [L]
-</IfModule>" > .htaccess
+cp misc/advanced.htaccess .htaccess
 
 # create FIRST_INSTALL file
 touch typo3conf/FIRST_INSTALL
