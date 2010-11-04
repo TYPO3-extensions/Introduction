@@ -1,3 +1,7 @@
+2010-11-04  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #10610: An error message will be displayed when the required directories are not writable.
+
 2010-10-22  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #10356: Added a new SQL file with the lightbox configuration and sample sys_news records

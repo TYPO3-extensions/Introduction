@@ -290,5 +290,23 @@ class tx_introduction_configuration {
 		}
 		return false;
 	}
+
+	/**
+	 * Checks if the given directory is writable
+	 *
+	 * @return boolean
+	 */
+	public function isDirectoryWritable($directory) {
+		if (!@is_dir(PATH_site . $directory)) {
+				// If the directory is missing, try to create it
+			t3lib_div::mkdir(PATH_site . $directory);
+		}
+
+		if (!@is_dir(PATH_site . $directory)) {
+			return false;
+		}
+
+		return is_writable(PATH_site . $directory);
+	}
 }
 ?>

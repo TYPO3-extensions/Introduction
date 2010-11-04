@@ -34,6 +34,11 @@
 					<label for="systemToInstallEmpty"><strong>Blank System</strong><br />
 					This will install a bare TYPO3 system with basic database and folder structure.</label>
 				</fieldset>
+
+				<!-- ###NON_WRITABLE_DIRECTORIES_REMOVEWHENEMPTY### begin -->
+				<p class="typo3-message message-error"><strong>In order for the introduction package to work correctly, the following directories should be writable:
+					<ul>###NON_WRITABLE_DIRECTORIES###</ul></strong></p>
+				<!-- ###NON_WRITABLE_DIRECTORIES_REMOVEWHENEMPTY### end -->
 				<fieldset>
 					<input type="hidden" name="TYPO3_INSTALL[database_type]" value="import|CURRENT_TABLES+STATIC" />
 					<input type="hidden" name="TYPO3_INSTALL[database_import_all]" value="1" />
