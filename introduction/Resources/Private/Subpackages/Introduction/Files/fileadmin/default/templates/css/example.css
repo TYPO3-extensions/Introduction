@@ -130,6 +130,7 @@ form .csc-mailform-radio fieldset input { float: none; }
 form .csc-mailform-radio fieldset label { text-align: left; float: none; width: auto; margin: 0; }
 form .csc-mailform-field input.mf-check, form .csc-mailform-field input.csc-mailform-radio { width: auto; }
 form .csc-mailform-field input.csc-mailform-radio { margin-right: 0.5em; }
+form .csc-mailform-field .csc-mailform-radio label { float: none; margin-right: 0; } 
 
 /* fe login*/
 
