@@ -186,6 +186,22 @@ class tx_introduction_controller {
 
 		$this->view = t3lib_div::makeInstance('tx_introduction_view_installintroduction');
 
+		$directories = array(
+			'fileadmin/',
+			'typo3conf/',
+			'typo3conf/ext/',
+			'typo3temp/',
+			'uploads/',
+		);
+		
+		$nonWritableDirectories = '';
+		foreach($directories as $directory) {
+			if (!$this->configuration->isDirectoryWritable($directory)) {
+				$nonWritableDirectories .= '<li>' . $directory . '</li>' . "\n";
+			}
+		}
+		$this->view->assign('NON_WRITABLE_DIRECTORIES', $nonWritableDirectories);
+
 		$this->view->assign('AVAILABLE_SUBPACKAGES', $subpackagesOutput);
 		$this->view->assign('AVAILABLE_SUBPACKAGES_INSTALLMESSAGES', $subpackagesProgressOutput);
 		$message = $this->view->render();
