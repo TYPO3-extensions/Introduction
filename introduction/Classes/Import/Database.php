@@ -89,11 +89,11 @@ class tx_introduction_import_database {
 				if ($field['Default'] === NULL && $field['Null'] == 'YES' ) {
 					$default = ' DEFAULT NULL ';
 				} elseif ($field['Default'] != '') {
-					$default = ' DEFAULT '.$GLOBALS['TYPO3_DB']->fullQuoteStr($field['Default']);
+					$default = ' DEFAULT '.$GLOBALS['TYPO3_DB']->fullQuoteStr($field['Default'], $table);
 				} else {
 					$default = '';
 				}
-				$fieldName = $GLOBALS['TYPO3_DB']->quoteStr($field['Field']);
+				$fieldName = $GLOBALS['TYPO3_DB']->quoteStr($field['Field'], $table);
 				$GLOBALS['TYPO3_DB']->admin_query('ALTER TABLE `'.$table.'` CHANGE `'.$fieldName.'` `'.$fieldName.'` '.$field['Type'].' CHARACTER SET '.$characterSet.' COLLATE '.$collation.' '.$nullable.' '.$default);
 			}
 		}

@@ -1,5 +1,6 @@
 2010-12-21  Peter Beernink <p.beernink@drecomm.nl>
 
+	* Fixed PHP errors in the sys_log table due to missing argument in TYPO3_DB->quoteStr
 	* Fixed bug #11405: Configured the 404 page in localconf.php. Thanks to Christian Boltz
 
 2010-11-04  Peter Beernink <p.beernink@drecomm.nl>
