@@ -1,3 +1,8 @@
+2010-12-21  Peter Beernink <p.beernink@drecomm>
+
+	* Fixed bug #11405: Configured the 404 page in localconf.php. Thanks to Christian Boltz
+	* Fixed bug #11577: Updated the Extension importer class to work with the refactored Extension Manager. Thanks to Ernesto Baschny
+
 2010-11-04  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #10610: An error message will be displayed when the required directories are not writable.
