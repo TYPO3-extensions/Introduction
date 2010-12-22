@@ -25,13 +25,10 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-if (t3lib_div::int_from_ver(TYPO3_version) >= 4005000) {
-	define('TYPO3_EM_PATH', PATH_site . TYPO3_mainDir . 'sysext/em/mod1/');
-} else {
-	define('TYPO3_EM_PATH', PATH_site . TYPO3_mainDir . 'mod/tools/em/');
-}
-
-require_once(TYPO3_EM_PATH . 'class.em_terconnection.php');
+define('TYPO3_EM_PATH', PATH_site . TYPO3_mainDir . 'sysext/em/');
+define('PATH_typo3conf', PATH_site . 'typo3conf/');
+require_once(PATH_site . TYPO3_mainDir . 'template.php');
+require_once(TYPO3_EM_PATH . 'classes/connection/class.tx_em_connection_extdirectserver.php');
 
 class tx_introduction_import_extension {
 
@@ -43,14 +40,9 @@ class tx_introduction_import_extension {
 	private $sourceDirectory = 'Resources/Private/Extensions';
 
 	/**
-	 * @var SC_mod_tools_em_terconnection
+	 * @var tx_em_Connection_ExtDirectServer
 	 */
-	private $terConnection = null;
-
-	/**
-	 * @var SC_mod_tools_em_index
-	 */
-	private $emIndex = null;
+	private $em = NULL;
 
 	/**
 	 * Initializes the extension manager
@@ -60,22 +52,9 @@ class tx_introduction_import_extension {
 		$GLOBALS['LANG'] = t3lib_div::makeInstance('language');
 		$GLOBALS['LANG']->csConvObj = t3lib_div::makeInstance('t3lib_cs');
 
-		require_once(TYPO3_EM_PATH . 'class.em_index.php');
-		$this->extensionManager = t3lib_div::makeInstance('SC_mod_tools_em_index');
-
-		// Setting paths of install scopes for the extensionManager
-		$this->extensionManager->typePaths = Array (
-			'S' => TYPO3_mainDir.'sysext/',
-			'G' => TYPO3_mainDir.'ext/',
-			'L' => 'typo3conf/ext/'
-		);
-		$this->extensionManager->typeBackPaths = Array (
-			'S' => '../../../',
-			'G' => '../../../',
-			'L' => '../../../../'.TYPO3_mainDir
-		);
-
-		$this->terConnection = t3lib_div::makeInstance('SC_mod_tools_em_terconnection');
+		$this->em = t3lib_div::makeInstance('tx_em_Connection_ExtDirectServer');
+		$this->em->extensionList = t3lib_div::makeInstance('tx_em_Extensions_List');
+		$this->em->extensionDetails = t3lib_div::makeInstance('tx_em_Extensions_Details');
 	}
 
 	/**
@@ -95,35 +74,18 @@ class tx_introduction_import_extension {
 	 * @return void
 	 */
 	public function importExtension($extensionKey) {
+		$_POST['depsolver']['ignore']['typo3'] = 1; 
+		if (t3lib_extMgm::isLoaded($extensionKey)) {
+			return;
+		}
 		$extensionDirectory = PATH_typo3conf . 'ext/' . $extensionKey . '/';
-
-		$extension = file_get_contents(t3lib_extMgm::extPath('introduction', $this->sourceDirectory . '/' . $extensionKey . '.t3x'));
-		$extensionArray = $this->terConnection->decodeExchangeData($extension);
-
-		$EM_CONF = $this->extensionManager->fixEMCONF($extensionArray[0]['EM_CONF']);
-
-		// Create the directories needed for the extension
-		t3lib_div::mkdir($extensionDirectory);
-		$directoriesInExtension = $this->extensionManager->extractDirsFromFileList(array_keys($extensionArray[0]['FILES']));
-		foreach($directoriesInExtension as $directory) {
-			t3lib_div::mkdir_deep($extensionDirectory, $directory);
-		}
-
-		// Now write all the files from the extension
-		foreach($extensionArray[0]['FILES'] as $theFile => $fileData) {
-			t3lib_div::writeFile($extensionDirectory . $theFile, $fileData['content']);
-			if (!@is_file($extensionDirectory . $theFile)) {
-				// Error handling
-			} elseif (md5(t3lib_div::getUrl($extensionDirectory . $theFile)) != $fileData['content_md5']) {
-				// Error handling
-			}
-		}
-
-		// Create EMCONF file
-		$extensionMD5Array = $this->extensionManager->serverExtensionMD5Array($extensionKey, array('type' => 'L', 'EM_CONF' => array(), 'files' => array()));
-		$EM_CONF['_md5_values_when_last_written'] = serialize($extensionMD5Array);
-		$emConfFile = $this->extensionManager->construct_ext_emconf_file($extensionKey, $EM_CONF);
-		t3lib_div::writeFile($extensionDirectory . 'ext_emconf.php', $emConfFile);
+		$extensionFile = t3lib_extMgm::extPath('introduction', $this->sourceDirectory . '/' . $extensionKey . '.t3x');
+		$uploadOptions = array(
+			'loc' => 'L',  // local
+			'extfile' => $extensionFile,
+			'uploadOverwrite' => TRUE,
+		);
+		$this->em->uploadExtension($uploadOptions);
 	}
 
 	/**
@@ -133,11 +95,10 @@ class tx_introduction_import_extension {
 	 * @return void
 	 */
 	public function enableExtension($extensionKey) {
-		list($extensionList,) = $this->extensionManager->getInstalledExtensions();
-		$newExtensionList = $this->extensionManager->addExtToList($extensionKey, $extensionList);
-		$this->extensionManager->writeNewExtensionList($newExtensionList);
-		$this->extensionManager->refreshGlobalExtList();
-		$this->extensionManager->forceDBupdates($extensionKey, $extensionList[$extensionKey]);
+		if (t3lib_extMgm::isLoaded($extensionKey)) {
+			return;
+		}
+		$this->em->enableExtension($extensionKey);
 	}
 }
 ?>
