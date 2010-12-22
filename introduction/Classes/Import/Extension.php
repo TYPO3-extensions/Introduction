@@ -75,6 +75,9 @@ class tx_introduction_import_extension {
 			'L' => '../../../../'.TYPO3_mainDir
 		);
 
+		// Make an array needed by removeRequiredExtFromListArr().
+		$this->extensionManager->requiredExt = t3lib_div::trimExplode(',',$GLOBALS['TYPO3_CONF_VARS']['EXT']['requiredExt'],1);
+
 		$this->terConnection = t3lib_div::makeInstance('SC_mod_tools_em_terconnection');
 	}
 
