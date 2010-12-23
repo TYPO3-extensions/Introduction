@@ -1,4 +1,8 @@
-2010-12-21  Peter Beernink <p.beernink@drecomm.nl>
+2010-12-23  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Image placement in the RTE is not supported. Added RTE configuration.
+
+2010-12-22  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #10664: Fixed PHP errors in the sys_log table. Thanks to Andrew Murphy
 	* Fixed PHP errors in the sys_log table due to missing argument in TYPO3_DB->quoteStr
