@@ -52,8 +52,6 @@
 ###STATUS_MESSAGE###
 <!-- ###LOGIN_FORM### -->
 <form action="###ACTION_URI###" target="_top" method="post" onsubmit="###ON_SUBMIT###" id="tx_felogin_loginform">
-	<fieldset>
-	<legend>###LEGEND###</legend>
 	<div>
 		<label for="user">###USERNAME_LABEL###</label>
 		<input type="text" id="user" name="user" value="" />
@@ -82,7 +80,6 @@
 		<input type="hidden" name="###PREFIXID###[noredirect]" value="###NOREDIRECT###" />
 		###EXTRA_HIDDEN###
 	</div>
-	</fieldset>
 </form>
 
 <!--###FORGOTP_VALID###-->
@@ -110,8 +107,6 @@
 ###STATUS_MESSAGE###
 
 <form action="###ACTION_URI###" target="_top" method="post">
-	<fieldset>
-	<legend>###LEGEND###</legend>
 	<div>
 		<label>###USERNAME_LABEL###</label>
 	 	###USERNAME###
@@ -125,7 +120,6 @@
 		<input type="hidden" name="pid" value="###STORAGE_PID###" />
 		<input type="hidden" name="###PREFIXID###[noredirect]" value="###NOREDIRECT###" />
 	</div>
-	</fieldset>
 </form>
 
 <!--###TEMPLATE_LOGOUT###-->
@@ -147,8 +141,6 @@
     <div class="felogin-hidden">
 		<input type="hidden" name="tx_felogin_pi1[forgot_hash]" value="###FORGOTHASH###" />
 	</div>
-	<fieldset>
-	<legend>###LEGEND###</legend>
 	<div>
 		<label for="###FORGOT_EMAIL###">###DATA_LABEL###</label>
 		<input type="text" name="###FORGOT_EMAIL###" id="###FORGOT_EMAIL###" />
@@ -156,7 +148,6 @@
 	<div>
 		<input type="submit" name="submit" value="###SEND_PASSWORD###" />
 	 </div>
-	</fieldset>
 </form>
 <!-- ###FORGOT_FORM### -->
 <p>###BACKLINK_LOGIN###&nbsp;</p>

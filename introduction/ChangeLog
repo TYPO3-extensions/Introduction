@@ -1,5 +1,6 @@
 2010-12-23  Peter Beernink <p.beernink@drecomm.nl>
 
+	* Fixed bug #9078: Removed fieldset and legend from the login form.
 	* Image placement in the RTE is not supported. Added RTE configuration.
 
 2010-12-22  Peter Beernink <p.beernink@drecomm.nl>
