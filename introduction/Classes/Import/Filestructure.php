@@ -91,6 +91,28 @@ class tx_introduction_import_filestructure {
 	 */
 	public function importFiles() {
 		$this->copyRecursive(t3lib_extMgm::extPath('introduction', $this->sourceDirectory), PATH_site);
+		$this->fixPermissions(t3lib_extMgm::extPath('introduction', $this->sourceDirectory), PATH_site);
+	}
+
+	/**
+	 * Fixes permissions of the copied files
+	 *
+	 * @param string $sourceDirectory The directory from which the directorystructure can be fetched
+	 * @param string $destinationDirectory The directory in which the files where copied
+	 * @return void
+	 */
+	private function fixPermissions($sourceDirectory, $destinationDirectory) {
+echo $sourceDirectory . '<br />';
+		if (is_dir($sourceDirectory)) {
+			$directoryHandle = opendir($sourceDirectory);
+			while ($file = readdir($directoryHandle)) {
+				if ($file != '.' && $file != '..' && $file != '.svn') {
+echo $destinationDirectory . '/' . $file . '<br />';
+					t3lib_div::fixPermissions($destinationDirectory . $file, TRUE);
+				}
+			}
+			closedir($directoryHandle);
+		}
 	}
 
 	/**

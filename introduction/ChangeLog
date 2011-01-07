@@ -1,5 +1,6 @@
 2011-01-07  Peter Beernink <p.beernink@drecomm.nl>
 
+	* Fixed bug #11770: After copying all files, fix permissions.
 	* Fixed bug #11764: Removed double slashes which caused an error in some browsers.
 	* Fixed bug #11919: Changed the author of the package
 	* Fixed bug #9826: User tools module added to the demo users. Thanks to Ben van 't Ende

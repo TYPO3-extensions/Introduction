@@ -30,7 +30,7 @@
 ## INSTALL SCRIPT POINT - all lines after this point will be included by the install script. Do not remove!
 $TYPO3_CONF_VARS['BE']['forceCharset'] = 'utf-8';
 $TYPO3_CONF_VARS['SYS']['setDBinit'] = 'SET NAMES utf8;';
-$TYPO3_CONF_VARS['BE']['fileCreateMask'] = '0664';
-$TYPO3_CONF_VARS['BE']['folderCreateMask'] = '2775';
+$TYPO3_CONF_VARS['BE']['fileCreateMask'] = '0666';
+$TYPO3_CONF_VARS['BE']['folderCreateMask'] = '2777';
 $TYPO3_CONF_VARS['GFX']['jpg_quality'] = '80';  //  Modified or inserted by TYPO3 Install Tool.
 ?>
