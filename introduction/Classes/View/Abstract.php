@@ -61,7 +61,7 @@ abstract class tx_introduction_view_abstract {
 	 */
 	public function __construct() {
 		$this->contentObject = t3lib_div::makeInstance('tslib_cObj');
-		$this->assign(PATH_TO_RESOURCES, t3lib_div::getIndpEnv('TYPO3_SITE_PATH').t3lib_extMgm::siteRelPath('introduction').'/Resources/Public/');
+		$this->assign(PATH_TO_RESOURCES, t3lib_div::getIndpEnv('TYPO3_SITE_PATH').t3lib_extMgm::siteRelPath('introduction').'Resources/Public/');
 	}
 	/**
 	 * Assign a value to the template
