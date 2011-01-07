@@ -1,3 +1,10 @@
+2011-01-07  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #11919: Changed the author of the package
+	* Fixed bug #9826: User tools module added to the demo users. Thanks to Ben van 't Ende
+	* Bugfix: No be_users where available anymore. Added them.
+	* Resolved issue #11378: Added link to the Getting Started manual. Thanks to Ben van 't Ende
+
 2010-12-23  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #9078: Removed fieldset and legend from the login form.
