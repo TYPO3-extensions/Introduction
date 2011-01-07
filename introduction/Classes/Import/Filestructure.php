@@ -102,12 +102,10 @@ class tx_introduction_import_filestructure {
 	 * @return void
 	 */
 	private function fixPermissions($sourceDirectory, $destinationDirectory) {
-echo $sourceDirectory . '<br />';
 		if (is_dir($sourceDirectory)) {
 			$directoryHandle = opendir($sourceDirectory);
 			while ($file = readdir($directoryHandle)) {
 				if ($file != '.' && $file != '..' && $file != '.svn') {
-echo $destinationDirectory . '/' . $file . '<br />';
 					t3lib_div::fixPermissions($destinationDirectory . $file, TRUE);
 				}
 			}
