@@ -1,3 +1,7 @@
+2011-01-14  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #11780: Place recheck button when directories are not writable.
+
 2011-01-07  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug: Backend users where not able to place content in right/left column. Added the exclude field.
