@@ -201,6 +201,7 @@ class tx_introduction_controller {
 			}
 		}
 		$this->view->assign('NON_WRITABLE_DIRECTORIES', $nonWritableDirectories);
+		$this->view->assign('ALL_DIRECTORIES_WRITABLE', (strlen($nonWritableDirectories) ? '' : 'dummy'));
 
 		$this->view->assign('AVAILABLE_SUBPACKAGES', $subpackagesOutput);
 		$this->view->assign('AVAILABLE_SUBPACKAGES_INSTALLMESSAGES', $subpackagesProgressOutput);
