@@ -63,11 +63,11 @@ INSERT INTO be_groups VALUES (1,0,1280259524,'Simple editors',NULL,'tt_content:C
 UNLOCK TABLES;
 
 --
--- Table structure for table `be_layouts`
+-- Table structure for table `backend_layout`
 --
 
-DROP TABLE IF EXISTS be_layouts;
-CREATE TABLE be_layouts (
+DROP TABLE IF EXISTS backend_layout;
+CREATE TABLE backend_layout (
   uid int(11) NOT NULL auto_increment,
   pid int(11) NOT NULL default '0',
   t3ver_oid int(11) NOT NULL default '0',
@@ -75,7 +75,7 @@ CREATE TABLE be_layouts (
   t3ver_wsid int(11) NOT NULL default '0',
   t3ver_label varchar(255) default NULL,
   t3ver_state tinyint(4) NOT NULL default '0',
-  t3ver_stage tinyint(4) NOT NULL default '0',
+  t3ver_stage int(11) NOT NULL default '0',
   t3ver_count int(11) NOT NULL default '0',
   t3ver_tstamp int(11) NOT NULL default '0',
   t3ver_move_id int(11) NOT NULL default '0',
@@ -96,12 +96,12 @@ CREATE TABLE be_layouts (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `be_layouts`
+-- Dumping data for table `backend_layout`
 --
 
-LOCK TABLES be_layouts WRITE;
-/*!40000 ALTER TABLE be_layouts DISABLE KEYS */;
-/*!40000 ALTER TABLE be_layouts ENABLE KEYS */;
+LOCK TABLES backend_layout WRITE;
+/*!40000 ALTER TABLE backend_layout DISABLE KEYS */;
+/*!40000 ALTER TABLE backend_layout ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
