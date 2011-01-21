@@ -1,3 +1,7 @@
+2011-01-21  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #30063: Install Tool Step 4 - wrong rendering (Thanks to Thorsten Kahler)
+
 2011-01-14  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #11780: Place recheck button when directories are not writable.
