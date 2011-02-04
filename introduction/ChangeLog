@@ -2,6 +2,7 @@
 
 	* Fixed bug #12639: Added additional } in sys_template 'menu.breadcrumb' (Thanks to Ernesto Baschny)
 	* Fixed bug #12459: Updated database for TYPO 4.5.0
+	* Fixed bug #12473: Updated the RealURL and wt_spamshield extensions. Updated the database accordingly
 
 2011-01-21  Peter Beernink <p.beernink@drecomm.nl>
 
