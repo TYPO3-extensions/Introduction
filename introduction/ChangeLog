@@ -1,6 +1,7 @@
 2011-03-04  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #13271: Added exclude fields for normal users
+	* Fixed bug #13268: Added configuration to allow tt_new categories
 
 2011-02-04  Peter Beernink <p.beernink@drecomm.nl>
 
