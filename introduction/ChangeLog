@@ -1,3 +1,7 @@
+2011-03-04  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #13271: Added exclude fields for normal users
+
 2011-02-04  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #12639: Added additional } in sys_template 'menu.breadcrumb' (Thanks to Ernesto Baschny)
