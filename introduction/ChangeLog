@@ -1,3 +1,7 @@
+2011-05-31  Peter Beernink <p.beernink@drecomm.nl>
+
+	* Fixed bug #26999: Register needed extensions. Thanks to Ernesto Baschny
+
 2011-03-04  Peter Beernink <p.beernink@drecomm.nl>
 
 	* Fixed bug #13271: Added exclude fields for normal users

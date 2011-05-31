@@ -33,6 +33,12 @@ $GLOBALS['subpackageConfiguration'] = array(
 		'jquerycolorbox',
 	),
 	'extensionsToEnable' => array(
+		'extbase',
+		'fluid',
+		'version',
+		'workspaces',
+		'scheduler',
+		'linkvalidator',
 		'automaketemplate',
 		'realurl',
 		'tt_news',
