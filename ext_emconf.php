@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "introduction".
 #
-# Auto generated 15-11-2009 15:50
+# Auto generated 20-02-2013 15:50
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -11,8 +11,8 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Introduction package',
-	'description' => 'Introduction package to setup a introduction site',
+	'title' => 'The official TYPO3 Introduction Package for TYPO3 CMS 6.2',
+	'description' => 'It shows all out-of-the-box features of TYPO3, and includes a theme based on Twitter Bootstrap 3, and a style editor to customize the design.',
 	'category' => 'distribution',
 	'author' => 'Introduction Package Team',
 	'author_email' => '',
@@ -21,15 +21,15 @@ $EM_CONF[$_EXTKEY] = array(
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
 	'modify_tables' => '',
-	'clearCacheOnLoad' => 0,
+	'clearCacheOnLoad' => 1,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '6.2.0',
+	'version' => '6.2.000',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.2.0-6.2.99',
