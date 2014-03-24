@@ -11,8 +11,8 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'The official TYPO3 Introduction Package for TYPO3 CMS 6.2',
-	'description' => 'It shows all out-of-the-box features of TYPO3, and includes a theme based on Twitter Bootstrap 3, and a style editor to customize the design.',
+	'title' => 'The official Introduction Package to TYPO3',
+	'description' => 'This package delivers a new website (page tree) and shows all out-of-the-box features of TYPO3, and includes a theme based on Twitter Bootstrap 3, and a style editor to customize the design.',
 	'category' => 'distribution',
 	'author' => 'Introduction Package Team',
 	'author_email' => '',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '6.2.000',
+	'version' => '6.2.2',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.2.0-6.2.99',
